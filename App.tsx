@@ -335,7 +335,7 @@ const SECTION_META: Record<string, { icon: string; short: string; color: string;
   },
   "領會伴唱": {
     icon: "🎤",
-    short: "升降 Key、YouTube 下載、卡拉 OK",
+    short: "升降調、YouTube 下載、卡拉 OK",
     color: "from-[#b5179e] to-[#f72585]",
     bg: "bg-[#fff0f6]",
   },
@@ -354,11 +354,16 @@ const SECTION_META: Record<string, { icon: string; short: string; color: string;
 };
 
 const PROJECT_ICON: Record<string, string> = {
-  "破冰小遊戲集合": "🎯",
-  "SongsData 詩歌資料庫": "📚",
-  "songPTT 詩歌投影片": "🎵",
-  "Bible PPT 聖經投影": "📖",
-  "YouTube 下載與升降 Key": "🎧",
+  "定時炸彈": "💣",
+  "1A2B 猜數字": "🔢",
+  "2 種人": "🔀",
+  "你問我答": "🙋",
+  "誰是臥底": "🕵️",
+  "2 種人連線版": "🌐",
+  "詩歌資料庫": "📚",
+  "詩歌投影片": "🎵",
+  "聖經投影": "📖",
+  "下載與升降調": "🎧",
   "卡拉 OK 領會伴唱": "🎤",
   "語音即時翻譯": "🌐",
   "無廣告版 YouTube": "▶️",
