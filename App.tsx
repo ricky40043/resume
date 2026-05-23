@@ -590,7 +590,9 @@ function ToolsPage() {
 
 function App() {
   const pathname = usePathname();
-  return pathname.startsWith('/tools') ? <ToolsPage /> : <ResumePage />;
+  const isToolsDomain = window.location.hostname === 'tools.ricky-nova.com';
+  const showTools = isToolsDomain || pathname.startsWith('/tools');
+  return showTools ? <ToolsPage /> : <ResumePage />;
 }
 
 export default App;
