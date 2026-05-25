@@ -9,7 +9,7 @@
 
 ## 對外網址
 
-- https://ai.ricky-nova.com
+- https://studio.ricky-nova.com
 
 ## 本機開發
 

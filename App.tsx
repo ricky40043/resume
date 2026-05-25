@@ -593,7 +593,7 @@ function AiStudioPage() {
 
 function App() {
   const pathname = usePathname();
-  const isAiStudioDomain = window.location.hostname === 'ai.ricky-nova.com';
+  const isAiStudioDomain = window.location.hostname === 'studio.ricky-nova.com';
   const showAiStudio = isAiStudioDomain || pathname.startsWith('/ai-studio');
   return showAiStudio ? <AiStudioPage /> : <ResumePage />;
 }
