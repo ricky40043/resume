@@ -3,7 +3,7 @@ import { Experience, Project, Skill } from './types';
 export const PERSONAL_INFO = {
   name: "李柏儀 Ricky",
   title: "資深後端 / AI 協作軟體架構師",
-  publicTitle: "Ricky 的工具天地",
+  publicTitle: "ai 工作室",
   tagline: "具備 Python、.NET Core、C#、AOI 影像處理、AIOT 與全端系統實作經驗。",
   publicTagline: "把聚會、投影、語音即時翻譯、領會伴唱和活動營運做成可以直接使用的網頁服務。",
   bio: "我是一位資深後端工程師，擁有 3 年 Python 後端、3 年 .NET Core、5 年 C# 開發、6 年影像處理與 5 年 AOI 機台開發經驗。近年負責充電樁 EMS、智慧醫療影音串流、AIOT、智慧停車、能源管理與企業內部系統，也持續用 AI 協作工具加速新技術學習與產品開發。",
@@ -542,7 +542,7 @@ export const SYSTEM_INSTRUCTION = `
 回答策略：
 1. 用繁體中文回答。
 2. 找工作問題優先講履歷模式與職涯案例。
-3. 一般使用者問題優先推薦 Ricky 的工具天地中的公開服務。
+3. 一般使用者問題優先推薦 ai 工作室中的公開服務。
 4. 不誇大，使用「曾負責」「參與」「主導」等精準措辭。
 5. 若被問聯絡方式，提供 ${PERSONAL_INFO.email}。
 6. 回答控制在 120 字以內，除非使用者要求詳細說明。

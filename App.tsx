@@ -35,8 +35,8 @@ function navigateTo(path: string) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function Shell({ children, variant }: { children: React.ReactNode; variant: 'resume' | 'tools' }) {
-  if (variant === 'tools') {
+function Shell({ children, variant }: { children: React.ReactNode; variant: 'resume' | 'aiStudio' }) {
+  if (variant === 'aiStudio') {
     return (
       <div id="top" className="relative min-h-screen overflow-hidden bg-[#fff7e8] text-slate-900 selection:bg-[#ffcf56] selection:text-slate-950">
         <div className="fixed inset-0 z-0 bg-[linear-gradient(135deg,#fff7e8_0%,#e8f7ff_38%,#fff0f6_68%,#f1ffe9_100%)]" />
@@ -91,10 +91,10 @@ function ResumePage() {
           </div>
           <button
             type="button"
-            onClick={() => navigateTo('/tools')}
+            onClick={() => navigateTo('/ai-studio')}
             className="rounded-sm border border-amber-300/40 bg-amber-300/10 px-4 py-2 text-sm font-bold text-amber-200 transition-colors hover:bg-amber-300 hover:text-slate-950"
           >
-            前往工具天地
+            前往 ai 工作室
           </button>
         </div>
       </nav>
@@ -294,7 +294,7 @@ function ResumePage() {
             <p className="mb-3 font-mono text-sm font-bold text-amber-200">CONTACT</p>
             <h2 className="text-4xl font-bold text-white">找我面試或合作</h2>
             <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-slate-300">
-              這一頁只保留履歷、能力、職涯案例與工作經歷。給教會朋友或一般使用者的服務入口已獨立到工具天地。
+              這一頁只保留履歷、能力、職涯案例與工作經歷。給教會朋友或一般使用者的服務入口已獨立到 ai 工作室。
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <a href={`mailto:${PERSONAL_INFO.email}`} onMouseEnter={() => soundManager.playHover()} className="rounded-sm bg-amber-300 px-6 py-3 font-bold text-slate-950 transition-colors hover:bg-amber-200">
@@ -303,8 +303,8 @@ function ResumePage() {
               <a href={PERSONAL_INFO.resumeUrl} target="_blank" rel="noreferrer" onMouseEnter={() => soundManager.playHover()} className="rounded-sm border border-amber-300/40 px-6 py-3 font-bold text-amber-200 transition-colors hover:bg-amber-300 hover:text-slate-950">
                 PDF 履歷
               </a>
-              <button type="button" onClick={() => navigateTo('/tools')} className="rounded-sm border border-white/15 px-6 py-3 font-bold text-white transition-colors hover:border-amber-300/50 hover:text-amber-200">
-                前往工具天地
+              <button type="button" onClick={() => navigateTo('/ai-studio')} className="rounded-sm border border-white/15 px-6 py-3 font-bold text-white transition-colors hover:border-amber-300/50 hover:text-amber-200">
+                前往 ai 工作室
               </button>
             </div>
           </div>
@@ -428,7 +428,7 @@ function ToolTile({ project, large = false }: { project: Project; large?: boolea
   );
 }
 
-function ToolsPage() {
+function AiStudioPage() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("全部");
 
@@ -447,12 +447,12 @@ function ToolsPage() {
   const openProjects = PUBLIC_PROJECTS.filter((project) => project.url);
 
   return (
-    <Shell variant="tools">
+    <Shell variant="aiStudio">
       <nav className={`fixed left-0 right-0 top-0 z-40 transition-all duration-300 ${scrolled ? 'border-b-4 border-slate-950 bg-white/90 py-3 shadow-lg backdrop-blur-xl' : 'py-6'}`}>
         <div className="container mx-auto flex items-center justify-between gap-5 px-6">
           <a href="#top" onMouseEnter={() => soundManager.playHover()} className="flex items-center gap-3 text-xl font-black tracking-tight text-slate-950 md:text-2xl">
             <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#ffcf56] text-xl shadow-[0_5px_0_#111827]">🧰</span>
-            Ricky 的工具天地
+            ai 工作室
           </a>
           <div className="hidden items-center gap-2 text-sm font-black text-slate-700 lg:flex">
             <a href="#featured" className="rounded-full px-4 py-2 transition-colors hover:bg-[#ffcf56] hover:text-slate-950">推薦</a>
@@ -584,7 +584,7 @@ function ToolsPage() {
 
       <footer className="relative z-10 border-t-4 border-slate-950 bg-white py-8 text-center text-sm font-bold text-slate-500">
         <div className="container mx-auto px-6">
-          © {new Date().getFullYear()} Ricky 的工具天地 · {openProjects.length} 個工具已開放使用
+          © {new Date().getFullYear()} ai 工作室 · {openProjects.length} 個工具已開放使用
         </div>
       </footer>
     </Shell>
@@ -593,9 +593,9 @@ function ToolsPage() {
 
 function App() {
   const pathname = usePathname();
-  const isToolsDomain = window.location.hostname === 'tools.ricky-nova.com';
-  const showTools = isToolsDomain || pathname.startsWith('/tools');
-  return showTools ? <ToolsPage /> : <ResumePage />;
+  const isAiStudioDomain = window.location.hostname === 'ai.ricky-nova.com';
+  const showAiStudio = isAiStudioDomain || pathname.startsWith('/ai-studio');
+  return showAiStudio ? <AiStudioPage /> : <ResumePage />;
 }
 
 export default App;

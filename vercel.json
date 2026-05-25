@@ -1,11 +1,11 @@
 {
   "rewrites": [
     {
-      "source": "/tools",
+      "source": "/ai-studio",
       "destination": "/index.html"
     },
     {
-      "source": "/tools/(.*)",
+      "source": "/ai-studio/(.*)",
       "destination": "/index.html"
     }
   ]
