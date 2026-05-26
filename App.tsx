@@ -94,7 +94,7 @@ function ResumePage() {
             onClick={() => navigateTo('/ai-studio')}
             className="rounded-sm border border-amber-300/40 bg-amber-300/10 px-4 py-2 text-sm font-bold text-amber-200 transition-colors hover:bg-amber-300 hover:text-slate-950"
           >
-            前往 ai 工作室
+            前往 Ricky 的AI 工作室
           </button>
         </div>
       </nav>
@@ -294,7 +294,7 @@ function ResumePage() {
             <p className="mb-3 font-mono text-sm font-bold text-amber-200">CONTACT</p>
             <h2 className="text-4xl font-bold text-white">找我面試或合作</h2>
             <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-slate-300">
-              這一頁只保留履歷、能力、職涯案例與工作經歷。給教會朋友或一般使用者的服務入口已獨立到 ai 工作室。
+              這一頁只保留履歷、能力、職涯案例與工作經歷。給教會朋友或一般使用者的服務入口已獨立到 Ricky 的AI 工作室。
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <a href={`mailto:${PERSONAL_INFO.email}`} onMouseEnter={() => soundManager.playHover()} className="rounded-sm bg-amber-300 px-6 py-3 font-bold text-slate-950 transition-colors hover:bg-amber-200">
@@ -304,7 +304,7 @@ function ResumePage() {
                 PDF 履歷
               </a>
               <button type="button" onClick={() => navigateTo('/ai-studio')} className="rounded-sm border border-white/15 px-6 py-3 font-bold text-white transition-colors hover:border-amber-300/50 hover:text-amber-200">
-                前往 ai 工作室
+                前往 Ricky 的AI 工作室
               </button>
             </div>
           </div>
@@ -452,7 +452,7 @@ function AiStudioPage() {
         <div className="container mx-auto flex items-center justify-between gap-5 px-6">
           <a href="#top" onMouseEnter={() => soundManager.playHover()} className="flex items-center gap-3 text-xl font-black tracking-tight text-slate-950 md:text-2xl">
             <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#ffcf56] text-xl shadow-[0_5px_0_#111827]">🧰</span>
-            ai 工作室
+            Ricky 的AI 工作室
           </a>
           <div className="hidden items-center gap-2 text-sm font-black text-slate-700 lg:flex">
             <a href="#featured" className="rounded-full px-4 py-2 transition-colors hover:bg-[#ffcf56] hover:text-slate-950">推薦</a>
@@ -584,7 +584,7 @@ function AiStudioPage() {
 
       <footer className="relative z-10 border-t-4 border-slate-950 bg-white py-8 text-center text-sm font-bold text-slate-500">
         <div className="container mx-auto px-6">
-          © {new Date().getFullYear()} ai 工作室 · {openProjects.length} 個工具已開放使用
+          © {new Date().getFullYear()} Ricky 的AI 工作室 · {openProjects.length} 個工具已開放使用
         </div>
       </footer>
     </Shell>
