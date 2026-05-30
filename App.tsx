@@ -68,7 +68,7 @@ function ResumePage() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const featuredProjects = useMemo(() => CAREER_PROJECTS.filter((project) => project.featured).slice(0, 6), []);
+  const featuredProjects = useMemo(() => CAREER_PROJECTS.filter((project) => project.featured).slice(0, 8), []);
   const filteredProjects = useMemo(() => {
     if (activeSection === "全部" || activeSection === "職涯實戰") return CAREER_PROJECTS;
     if (activeSection === "公開作品") return PUBLIC_PROJECTS;
