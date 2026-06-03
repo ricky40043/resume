@@ -106,7 +106,7 @@ function ResumePage() {
               <span className="h-2 w-2 rounded-full bg-emerald-300" />
               {CAREER_PROJECTS.length} 個職涯案例 / {EXPERIENCE.length} 段工作經歷
             </div>
-            <h1 className="max-w-4xl text-5xl font-bold leading-[1.08] tracking-normal text-white md:text-7xl">
+            <h1 className="max-w-3xl text-4xl font-bold leading-[1.15] tracking-normal text-white [word-break:keep-all] sm:text-5xl md:text-6xl">
               {PERSONAL_INFO.name} 的履歷作品集
             </h1>
             <p className="mt-6 max-w-2xl text-xl leading-9 text-slate-300">
