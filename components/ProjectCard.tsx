@@ -22,16 +22,19 @@ const statusLabels: Record<Project['status'], string> = {
   Planning: "規劃中",
 };
 
-// 將各種影片連結轉成可嵌入格式：MP4 直接用 <video>，YouTube / Google Drive 用 iframe。
-const getEmbed = (raw: string): { type: 'video' | 'iframe'; src: string } => {
+// 將各種素材連結轉成可嵌入格式：MP4 用 <video>、圖片用 <img>、YouTube / Google Drive 用 iframe。
+const getEmbed = (raw: string): { type: 'video' | 'image' | 'iframe'; src: string } => {
   if (/\.(mp4|webm|ogg)(\?.*)?$/i.test(raw)) {
     return { type: 'video', src: raw };
+  }
+  if (/\.(png|jpe?g|gif|webp|svg|avif)(\?.*)?$/i.test(raw)) {
+    return { type: 'image', src: raw };
   }
   const yt = raw.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]+)/);
   if (yt) {
     return { type: 'iframe', src: `https://www.youtube.com/embed/${yt[1]}?autoplay=1&rel=0` };
   }
-  // Google Drive 或其他：確保是 /preview 嵌入網址
+  // Google Drive 或其他（影片 / 簡報 / PDF）：確保是 /preview 嵌入網址
   const src = raw.replace(/\/view(\?[^#]*)?(#.*)?$/, '/preview');
   return { type: 'iframe', src };
 };
@@ -124,7 +127,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, compact = false }) =
               }}
               className="inline-flex items-center gap-1.5 rounded-sm border border-amber-400/40 bg-amber-400/10 px-4 py-2 text-sm font-bold text-amber-200 transition-colors hover:bg-amber-400 hover:text-slate-950"
             >
-              ▶ Demo 影片
+              {project.mediaLabel || '▶ Demo 影片'}
             </button>
           )}
           {project.url ? (
@@ -177,6 +180,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, compact = false }) =
                   disablePictureInPicture
                   onContextMenu={(e) => e.preventDefault()}
                   className="h-full w-full"
+                />
+              ) : media.type === 'image' ? (
+                <img
+                  src={media.src}
+                  alt={`${project.title} 架構圖`}
+                  onContextMenu={(e) => e.preventDefault()}
+                  className="h-full w-full object-contain"
                 />
               ) : (
                 <iframe

@@ -231,7 +231,8 @@ export const CAREER_PROJECTS: Project[] = [
     description: "監控空壓機 sensor 資料，透過 AI LSTM 推算使用頻率與習慣，呈現機台健康、漏氣、用電量與戰情室分析；帶領團隊 3 個月闖過複賽與決賽，與研華 ESG 合作奪下林口新創競賽冠軍（100 萬獎金）。",
     highlights: ["林口新創競賽冠軍（100 萬獎金）", "帶領團隊規劃 POC", "AI LSTM 模型與資料產生"],
     tech: ["FastAPI", "SQLAlchemy", "Matplotlib", "LINE Bot", "VueChart", "LSTM"],
-    videoUrl: "https://drive.google.com/file/d/1oUqgM0CFbtDra8E_2aI5uokhv7ETAzhY/preview",
+    videoUrl: "https://drive.google.com/file/d/1AjPueI_YN4icG7qPh6YdXmX950YCQjVJ/preview",
+    mediaLabel: "ESG 簡報",
     repoName: "職涯案例",
   },
   {
