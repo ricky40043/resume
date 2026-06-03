@@ -1,4 +1,5 @@
-import React, { MouseEvent, useState } from 'react';
+import React, { MouseEvent, useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { Project } from '../types';
 import { soundManager } from '../utils/audio';
 
@@ -21,8 +22,23 @@ const statusLabels: Record<Project['status'], string> = {
   Planning: "規劃中",
 };
 
+// 將各種影片連結轉成可嵌入格式：MP4 直接用 <video>，YouTube / Google Drive 用 iframe。
+const getEmbed = (raw: string): { type: 'video' | 'iframe'; src: string } => {
+  if (/\.(mp4|webm|ogg)(\?.*)?$/i.test(raw)) {
+    return { type: 'video', src: raw };
+  }
+  const yt = raw.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]+)/);
+  if (yt) {
+    return { type: 'iframe', src: `https://www.youtube.com/embed/${yt[1]}?autoplay=1&rel=0` };
+  }
+  // Google Drive 或其他：確保是 /preview 嵌入網址
+  const src = raw.replace(/\/view(\?[^#]*)?(#.*)?$/, '/preview');
+  return { type: 'iframe', src };
+};
+
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, compact = false }) => {
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
+  const [showVideo, setShowVideo] = useState(false);
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -31,6 +47,21 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, compact = false }) =
       y: e.clientY - rect.top,
     });
   };
+
+  useEffect(() => {
+    if (!showVideo) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setShowVideo(false);
+    };
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', onKey);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', onKey);
+    };
+  }, [showVideo]);
+
+  const media = project.videoUrl ? getEmbed(project.videoUrl) : null;
 
   return (
     <article
@@ -84,6 +115,18 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, compact = false }) =
         </div>
 
         <div className="mt-auto flex flex-wrap gap-3">
+          {project.videoUrl && (
+            <button
+              type="button"
+              onClick={() => {
+                soundManager.playHover();
+                setShowVideo(true);
+              }}
+              className="inline-flex items-center gap-1.5 rounded-sm border border-amber-400/40 bg-amber-400/10 px-4 py-2 text-sm font-bold text-amber-200 transition-colors hover:bg-amber-400 hover:text-slate-950"
+            >
+              ▶ Demo 影片
+            </button>
+          )}
           {project.url ? (
             <a
               href={project.url}
@@ -94,9 +137,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, compact = false }) =
               開啟網站
             </a>
           ) : (
-            <span className="rounded-sm border border-white/10 px-4 py-2 text-sm font-semibold text-slate-400">
-              尚未部署
-            </span>
+            !project.videoUrl && (
+              <span className="rounded-sm border border-white/10 px-4 py-2 text-sm font-semibold text-slate-400">
+                尚未部署
+              </span>
+            )
           )}
           {project.repoName && (
             <span className="rounded-sm border border-white/10 px-4 py-2 text-sm text-slate-300">
@@ -105,6 +150,48 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, compact = false }) =
           )}
         </div>
       </div>
+
+      {showVideo && media && createPortal(
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 p-4 backdrop-blur-sm"
+          onClick={() => setShowVideo(false)}
+        >
+          <div className="relative w-full max-w-5xl" onClick={(e) => e.stopPropagation()}>
+            <div className="mb-3 flex items-center justify-between gap-4">
+              <span className="text-sm font-semibold text-amber-200">{project.title} · Demo</span>
+              <button
+                type="button"
+                onClick={() => setShowVideo(false)}
+                className="rounded-sm border border-white/20 px-3 py-1 text-sm text-slate-200 transition-colors hover:bg-white/10"
+              >
+                關閉 ✕
+              </button>
+            </div>
+            <div className="aspect-video w-full overflow-hidden rounded-lg bg-black shadow-2xl">
+              {media.type === 'video' ? (
+                <video
+                  src={media.src}
+                  controls
+                  autoPlay
+                  controlsList="nodownload noplaybackrate"
+                  disablePictureInPicture
+                  onContextMenu={(e) => e.preventDefault()}
+                  className="h-full w-full"
+                />
+              ) : (
+                <iframe
+                  src={media.src}
+                  title={`${project.title} demo`}
+                  className="h-full w-full"
+                  allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
+                  allowFullScreen
+                />
+              )}
+            </div>
+          </div>
+        </div>,
+        document.body
+      )}
     </article>
   );
 };
