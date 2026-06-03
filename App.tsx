@@ -170,7 +170,7 @@ function ResumePage() {
         <section id="featured" className="container mx-auto px-6 py-20 scroll-mt-24">
           <div className="mb-10">
             <p className="mb-3 font-mono text-sm font-bold text-amber-300">RESUME_HIGHLIGHTS</p>
-            <h2 className="text-4xl font-bold text-white">履歷第一屏要看到的重點</h2>
+            <h2 className="text-4xl font-bold text-white">重點案例</h2>
           </div>
           <div className="grid gap-6 lg:grid-cols-2">
             {featuredProjects.map((project) => (
