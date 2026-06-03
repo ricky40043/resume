@@ -32,7 +32,6 @@ export const SKILLS_CATEGORIES = [
     label: "後端",
     items: [
       "Python / FastAPI",
-      "Go / Gin",
       ".NET Core / C#",
       "SQLAlchemy / Entity Framework",
       "RESTful API / 自動排程",
@@ -43,7 +42,6 @@ export const SKILLS_CATEGORIES = [
     label: "前端",
     items: [
       "Vue3 / Pinia / TypeScript",
-      "React / Vite",
       "ECharts / 圖表客製化",
       "Naive UI / Tailwind CSS",
     ],
@@ -71,7 +69,7 @@ export const SKILLS_CATEGORIES = [
       "CI/CD 自動部署",
       "MQTT / Edge AI",
       "LINE Bot 串接",
-      "AI 協作（Antigravity / Codex / NotebookLM）",
+      "AI 協作（Claude / Antigravity / Codex / NotebookLM）",
     ],
   },
 ];
@@ -87,7 +85,7 @@ export const KEY_STRENGTHS = [
   },
   {
     title: "AI 協作產品開發",
-    desc: "2025 年起以 Antigravity、Codex、NotebookLM 等工具與 AI 深度協作，一週完成 AI 路燈巡檢、一個月學會 Go，能快速把想法做成上線的 side project。",
+    desc: "2025 年起以 Claude、Antigravity、Codex、NotebookLM 等工具與 AI 深度協作，一週完成 AI 路燈巡檢、一個月學會 Go，能快速把想法做成上線的 side project。",
   },
 ];
 
