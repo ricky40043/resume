@@ -6,7 +6,7 @@ export const PERSONAL_INFO = {
   publicTitle: "Ricky 的AI 工作室",
   tagline: "具備 Python、.NET Core、C#、AOI 影像處理、AIOT 與全端系統實作經驗。",
   publicTagline: "把聚會、投影、語音即時翻譯、領會伴唱和活動營運做成可以直接使用的網頁服務。",
-  bio: "我是一位熱愛把影像處理、後端架構與 AI 服務應用到生活的軟體工程師，具備 5 年 Python、6 年 C#、4 年 .NET Core 與 5 年 AOI 機台開發經驗，熟悉 FastAPI、Flask、Go (Gin)、Vue3 與 React 全端開發，並以 MSSQL、PostgreSQL、SQLite、Redis 搭配 Docker、Nginx 與 CI/CD 完成部署上線。曾在迅智網路優化人臉辨識架構，縮減 50% 資料庫並提升 10 倍運算效能，帶領團隊奪下研華 AI 智慧工廠競賽冠軍（百萬獎金）；在天茶智能完成 EMS、AMS 與智慧停車系統，並於 2024 台北智慧城市展展出。2023 年起以 Antigravity、Rovo CLI、Codex、Google AI Studio、NotebookLM 等工具與 AI 協作，曾一週完成 AI 路燈巡檢的開發與訓練，2025 年僅用一個月掌握 Go，並持續打造服務日常生活與教會聚會的 Side Projects。",
+  bio: "我是一位熱愛把影像處理、後端架構與 AI 服務應用到生活的軟體工程師，具備 5 年 Python、6 年 C#、4 年 .NET Core 與 5 年 AOI 機台開發經驗，熟悉 FastAPI、Flask、Go (Gin)、Vue3 與 React 全端開發，並以 MSSQL、PostgreSQL、SQLite、Redis 搭配 Docker、Nginx 與 CI/CD 完成部署上線。曾在迅智網路優化人臉辨識架構，縮減 50% 資料庫並提升 10 倍運算效能，帶領團隊奪下研華 AI 智慧工廠競賽冠軍（百萬獎金）；在天茶智能完成 EMS、AMS 與智慧停車系統，並於 2024 台北智慧城市展展出。2023 年起以 Antigravity、Codex、NotebookLM 等工具與 AI 協作，曾一週完成 AI 路燈巡檢的開發與訓練，2025 年僅用一個月掌握 Go，並持續打造服務日常生活與教會聚會的 Side Projects。",
   publicBio: "這裡整理我做過、正在做或即將部署的公開工具。一般使用者可以直接進入服務，聚會、服事、練唱、活動需要什麼就點進去用。",
   location: "New Taipei City, Taiwan",
   email: "ricky400430012@gmail.com",
