@@ -1,12 +1,12 @@
-import { Experience, Project, Skill } from './types';
+import { Experience, Project } from './types';
 
 export const PERSONAL_INFO = {
   name: "李柏儀 Ricky",
   title: "資深後端 / AI 協作軟體架構師",
   publicTitle: "Ricky 的AI 工作室",
-  tagline: "具備 Python、.NET Core、C#、AOI 影像處理、AIOT 與全端系統實作經驗。",
+  tagline: "資深後端 / 全端工程師，專長把影像、AI 與硬體整合成能上線的系統。",
   publicTagline: "把聚會、投影、語音即時翻譯、領會伴唱和活動營運做成可以直接使用的網頁服務。",
-  bio: "擁有近 10 年軟體開發經驗的資深工程師，主軸是後端架構 × 影像處理 × AI 落地，能從影像演算法、後端、前端到部署一條龍交付，橫跨智慧醫療、能源管理、智慧城市與工業自動化。曾將整套 .NET 後端翻寫為 Python / FastAPI、資料表砍半（30→15）並讓人臉辨識效能提升 5–10 倍，從零打造 AIOT SaaS 戰情室、SNMP 網路監控與 MQTT 智慧停車平台，並帶領團隊與研華 ESG 合作奪下林口新創競賽冠軍（100 萬獎金）。專精 Python、C#、.NET Core、Go 全端開發，以及 OpenCV、YOLO、LSTM 影像與 AI 模型落地。2023 年起以 Antigravity、Codex、NotebookLM 與 AI 深度協作，一週完成 AI 路燈巡檢、一個月掌握 Go，持續把想法變成能上線、好維護的產品。",
+  bio: "擁有近 10 年軟體開發經驗的資深後端工程師，做過充電樁能源管理、智慧醫療影音串流、人臉辨識體溫量測、智慧停車與網路監控等正式上線系統，從架構、後端、前端到自架伺服器部署都能一手完成。曾將整套 .NET 後端翻寫為 Python / FastAPI、資料表砍半（30→15）並讓人臉辨識效能提升 5–10 倍，也帶領團隊與研華 ESG 合作奪下林口新創競賽冠軍（100 萬獎金）。主力技術為 Python、Go、.NET Core 與 Vue3 / React 全端，搭配 OpenCV、YOLO、FFmpeg 與 LSTM 處理影像、影音與 AI 模型，全部部署在自架 Ubuntu 伺服器並以 CI/CD 自動發佈。2025 年起深度與 AI 協作（Antigravity、Codex、NotebookLM），一個月學會 Go，並獨立上線串接 AI Vision + FFmpeg 的回憶影片生成、即時多語語音翻譯與多人連線遊戲等 Side Project。",
   publicBio: "這裡整理我做過、正在做或即將部署的公開工具。一般使用者可以直接進入服務，聚會、服事、練唱、活動需要什麼就點進去用。",
   location: "New Taipei City, Taiwan",
   email: "ricky400430012@gmail.com",
@@ -27,34 +27,53 @@ export const RESUME_SECTIONS = ["全部", "職涯實戰", "卓越科技", "天�
 
 export const PUBLIC_SECTIONS = ["全部", "破冰遊戲", "投影同工", "領會伴唱", "工具類", "其他專案"];
 
-export const SKILLS_CATEGORIES = {
-  backend: [
-    { name: "Python / FastAPI / SQLAlchemy", level: 90 },
-    { name: ".NET Core / C# / Entity Framework", level: 88 },
-    { name: "Go / Gin / REST API", level: 76 },
-  ],
-  frontend: [
-    { name: "Vue3 / TypeScript / Pinia", level: 86 },
-    { name: "React / Vite / SPA", level: 82 },
-    { name: "ECharts / Dashboard / UI 串接", level: 84 },
-  ],
-  architecture: [
-    { name: "SA 系統分析 / API 規劃", level: 88 },
-    { name: "Docker / Nginx / 部署", level: 84 },
-    { name: "MS SQL / PostgreSQL / SQLite / Redis", level: 84 },
-  ],
-  aiot: [
-    { name: "OpenCV / AOI / 影像處理", level: 90 },
-    { name: "MQTT / Edge AI / AIOT", level: 84 },
-    { name: "LINE Bot / AI Chat / FFmpeg", level: 80 },
-  ],
-};
-
-export const SKILLS: Skill[] = [
-  ...SKILLS_CATEGORIES.backend,
-  ...SKILLS_CATEGORIES.frontend,
-  ...SKILLS_CATEGORIES.architecture,
-  ...SKILLS_CATEGORIES.aiot,
+export const SKILLS_CATEGORIES = [
+  {
+    label: "後端",
+    items: [
+      "Python / FastAPI",
+      "Go / Gin",
+      ".NET Core / C#",
+      "SQLAlchemy / Entity Framework",
+      "RESTful API / 自動排程",
+      "pytest 單元測試",
+    ],
+  },
+  {
+    label: "前端",
+    items: [
+      "Vue3 / Pinia / TypeScript",
+      "React / Vite",
+      "ECharts / 圖表客製化",
+      "Naive UI / Tailwind CSS",
+    ],
+  },
+  {
+    label: "資料庫",
+    items: ["MS SQL", "PostgreSQL", "SQLite", "Redis"],
+  },
+  {
+    label: "影像 / AI",
+    items: [
+      "OpenCV / 人臉辨識",
+      "YOLO 物件偵測",
+      "LSTM 時序預測",
+      "FFmpeg / Demucs 影音處理",
+      "Gemini / OpenAI Vision",
+      "AOI 自動光學檢測",
+    ],
+  },
+  {
+    label: "部署 / 工具",
+    items: [
+      "自架 Ubuntu Server",
+      "Docker / Nginx",
+      "CI/CD 自動部署",
+      "MQTT / Edge AI",
+      "LINE Bot 串接",
+      "AI 協作（Antigravity / Codex / NotebookLM）",
+    ],
+  },
 ];
 
 export const KEY_STRENGTHS = [
@@ -68,7 +87,7 @@ export const KEY_STRENGTHS = [
   },
   {
     title: "AI 協作產品開發",
-    desc: "2023 年起使用 Antigravity、Rovo CLI、Codex、Google AI Studio、NotebookLM 等工具提升學習與開發效率，並能快速建立 side project。",
+    desc: "2025 年起以 Antigravity、Codex、NotebookLM 等工具與 AI 深度協作，一週完成 AI 路燈巡檢、一個月學會 Go，能快速把想法做成上線的 side project。",
   },
 ];
 

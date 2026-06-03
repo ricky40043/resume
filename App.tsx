@@ -234,23 +234,18 @@ function ResumePage() {
             <p className="mb-3 font-mono text-sm font-bold text-amber-300">CAPABILITY_MAP</p>
             <h2 className="text-4xl font-bold text-white">能力地圖</h2>
           </div>
-          <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-4">
-            {Object.entries(SKILLS_CATEGORIES).map(([group, skills]) => (
-              <div key={group} className="rounded-lg border border-white/10 bg-slate-950/72 p-7">
-                <h3 className="mb-6 font-mono text-lg font-bold uppercase text-amber-200">{group}</h3>
-                <div className="space-y-5">
-                  {skills.map((skill) => (
-                    <div key={skill.name}>
-                      <div className="mb-2 flex justify-between gap-4 text-sm text-slate-300">
-                        <span>{skill.name}</span>
-                        <span className="font-mono text-amber-200">{skill.level}%</span>
-                      </div>
-                      <div className="h-1.5 overflow-hidden rounded-full bg-white/10">
-                        <div className="h-full rounded-full bg-amber-300" style={{ width: `${skill.level}%` }} />
-                      </div>
-                    </div>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {SKILLS_CATEGORIES.map((group) => (
+              <div key={group.label} className="rounded-lg border border-white/10 bg-slate-950/72 p-7">
+                <h3 className="mb-5 text-lg font-bold text-amber-200">{group.label}</h3>
+                <ul className="space-y-2.5">
+                  {group.items.map((item) => (
+                    <li key={item} className="flex items-start gap-2.5 text-sm text-slate-300">
+                      <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-amber-300" />
+                      <span>{item}</span>
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
             ))}
           </div>
