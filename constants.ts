@@ -184,6 +184,7 @@ export const CAREER_PROJECTS: Project[] = [
     description: "將 .NET 後端翻寫為 Python，資料表從約 30 張縮減到 15 張，支援多人臉辨識、體溫量測、訪客建模、異常通報與語音回應。",
     highlights: ["效能提升 5-10 倍", "資料結構重構", "多人辨識與正臉篩選"],
     tech: ["Python", "FastAPI", "OpenCV", "C#", "SocketIO", "Vue3"],
+    videoUrl: "https://drive.google.com/file/d/13VuNHzjpNLdYdWUATdDdD-82J59zdWAk/preview",
     repoName: "職涯案例",
     featured: true,
   },
@@ -207,6 +208,7 @@ export const CAREER_PROJECTS: Project[] = [
     description: "以 Python SNMP / Trap 從零建立網路監控系統，包含拓撲圖、平面配置圖、異常主動推播與自動掃描新增設備。",
     highlights: ["SNMP / Trap", "拓撲圖與平面圖", "異常推播"],
     tech: ["Python", "FastAPI", "pysnmp", "Docker", "Mail Server", "Vue3"],
+    videoUrl: "https://drive.google.com/file/d/1ND1zir25NjTw3hKvBcA-OtoUgRTq42No/preview",
     repoName: "職涯案例",
   },
   {
@@ -229,6 +231,7 @@ export const CAREER_PROJECTS: Project[] = [
     description: "監控空壓機 sensor 資料，透過 AI LSTM 推算使用頻率與習慣，呈現機台健康、漏氣、用電量與戰情室分析；帶領團隊 3 個月闖過複賽與決賽，與研華 ESG 合作奪下林口新創競賽冠軍（100 萬獎金）。",
     highlights: ["林口新創競賽冠軍（100 萬獎金）", "帶領團隊規劃 POC", "AI LSTM 模型與資料產生"],
     tech: ["FastAPI", "SQLAlchemy", "Matplotlib", "LINE Bot", "VueChart", "LSTM"],
+    videoUrl: "https://drive.google.com/file/d/1oUqgM0CFbtDra8E_2aI5uokhv7ETAzhY/preview",
     repoName: "職涯案例",
   },
   {
