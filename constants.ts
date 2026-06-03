@@ -265,7 +265,7 @@ export const CAREER_PROJECTS: Project[] = [
     section: "迅智網路",
     status: "Demo",
     description: "智慧回收機系統：使用者投入衣物、掃 QR Code 完成機台定位綁定後，AI 影像辨識自動判斷衣服 / 褲子 / 外套並依折損程度評分給點，點數可在平台兌換商品或食物，是一套完整的回收點數系統。",
-    highlights: ["AI 影像辨識分類與折損評分", "掃 QR + GPS 定位綁定機台", "完整點數與商品兌換系統"],
+    highlights: ["通過「公益創新．徵案 100」第一階段", "AI 影像辨識分類與折損評分", "掃 QR + GPS 定位綁定機台"],
     tech: ["AI 影像辨識", "GPS 定位", "FastAPI", "Vue3"],
     videoUrl: "https://drive.google.com/file/d/1mH1IrUnLWY6yjpmkXdtNxqWOZIYIOPj_/preview",
     repoName: "職涯案例",
