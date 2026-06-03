@@ -202,12 +202,12 @@ export const CAREER_PROJECTS: Project[] = [
   },
   {
     id: 12,
-    title: "研華空壓機智慧工廠 ESG 節能平台",
+    title: "空壓機智慧工廠 ESG 節能平台（林口新創競賽冠軍）",
     category: "迅智網路 / ESG AIOT",
     section: "迅智網路",
     status: "Demo",
-    description: "監控空壓機 sensor 資料，透過 AI 推算使用頻率與習慣，呈現機台健康、漏氣、用電量與戰情室分析；3 個月內通過複賽與決賽。",
-    highlights: ["帶領團隊規劃 POC", "AI LSTM 模型討論與資料產生", "ESG 節能優勝"],
+    description: "監控空壓機 sensor 資料，透過 AI LSTM 推算使用頻率與習慣，呈現機台健康、漏氣、用電量與戰情室分析；帶領團隊 3 個月闖過複賽與決賽，與研華 ESG 合作奪下林口新創競賽冠軍（100 萬獎金）。",
+    highlights: ["林口新創競賽冠軍（100 萬獎金）", "帶領團隊規劃 POC", "AI LSTM 模型與資料產生"],
     tech: ["FastAPI", "SQLAlchemy", "Matplotlib", "LINE Bot", "VueChart", "LSTM"],
     repoName: "職涯案例",
   },
@@ -518,7 +518,7 @@ export const EXPERIENCE: Experience[] = [
     role: "研發主任工程師",
     company: "迅智網路有限公司",
     period: "2021/06 - 2023/05",
-    description: "擔任後端架構、API 實作、影像處理演算法研究與團隊帶領角色。將 .NET 後端翻寫為 Python，縮減資料表並提升人臉辨識效能 5-10 倍，自學 Vue3 完成 AIOT 考勤與智慧工廠平台初版。",
+    description: "擔任後端架構、API 實作、影像處理演算法研究與團隊帶領角色。將 .NET 後端翻寫為 Python，縮減資料表並提升人臉辨識效能 5-10 倍，自學 Vue3 完成 AIOT 考勤與智慧工廠平台初版；帶領團隊與研華 ESG 合作，奪下林口新創競賽冠軍（100 萬獎金）。",
   },
   {
     role: "軟體工程師",
@@ -547,7 +547,7 @@ export const SYSTEM_INSTRUCTION = `
 
 定位：${PERSONAL_INFO.title}
 簡介：${PERSONAL_INFO.bio}
-職涯重點：卓越科技充電樁 EMS / 智慧醫療影音串流 / LINE 與 AI 內部工具；天茶智能 AMS / EMS / 宜蘭智慧停車；迅智網路 AIOT、人臉辨識、網路監控、ESG 智慧工廠、MR 教育訓練；光欣科技 AOI 自動光學檢測。
+職涯重點：卓越科技充電樁 EMS / 智慧醫療影音串流 / LINE 與 AI 內部工具；天茶智能 AMS / EMS / 宜蘭智慧停車；迅智網路 AIOT、人臉辨識、網路監控、空壓機 ESG 智慧工廠（與研華 ESG 合作奪林口新創競賽冠軍、100 萬獎金）、MR 教育訓練；光欣科技 AOI 自動光學檢測。
 公開作品：${PUBLIC_PROJECTS.filter((project) => project.featured).map((project) => project.title).join('、')}。
 主要能力：Python FastAPI、.NET Core、C#、Go、Vue3、React、MS SQL、PostgreSQL、SQLite、Redis、Docker、Nginx、OpenCV、MQTT、LINE Bot、AI 協作開發。
 
