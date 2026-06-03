@@ -6,7 +6,7 @@ export const PERSONAL_INFO = {
   publicTitle: "Ricky 的AI 工作室",
   tagline: "具備 Python、.NET Core、C#、AOI 影像處理、AIOT 與全端系統實作經驗。",
   publicTagline: "把聚會、投影、語音即時翻譯、領會伴唱和活動營運做成可以直接使用的網頁服務。",
-  bio: "後端架構 × 影像處理 × AI 落地的資深軟體工程師，能從影像演算法、後端、前端到部署一條龍交付，橫跨智慧醫療、能源管理、智慧城市與工業自動化。曾將整套 .NET 後端翻寫為 Python / FastAPI、資料表砍半（30→15）並讓人臉辨識效能提升 5–10 倍，從零打造 AIOT SaaS 戰情室、SNMP 網路監控與 MQTT 智慧停車平台，並帶領 AI / 影像 / 前後端團隊奪下研華智慧工廠 ESG 競賽冠軍（百萬獎金）。專精 Python、C#、.NET Core、Go 全端開發，以及 OpenCV、YOLO、LSTM 影像與 AI 模型落地。2023 年起以 Antigravity、Codex、NotebookLM 與 AI 深度協作，一週完成 AI 路燈巡檢、一個月掌握 Go，持續把想法變成能上線、好維護的產品。",
+  bio: "擁有近 10 年軟體開發經驗的資深工程師，主軸是後端架構 × 影像處理 × AI 落地，能從影像演算法、後端、前端到部署一條龍交付，橫跨智慧醫療、能源管理、智慧城市與工業自動化。曾將整套 .NET 後端翻寫為 Python / FastAPI、資料表砍半（30→15）並讓人臉辨識效能提升 5–10 倍，從零打造 AIOT SaaS 戰情室、SNMP 網路監控與 MQTT 智慧停車平台，並帶領團隊與研華 ESG 合作奪下林口新創競賽冠軍（100 萬獎金）。專精 Python、C#、.NET Core、Go 全端開發，以及 OpenCV、YOLO、LSTM 影像與 AI 模型落地。2023 年起以 Antigravity、Codex、NotebookLM 與 AI 深度協作，一週完成 AI 路燈巡檢、一個月掌握 Go，持續把想法變成能上線、好維護的產品。",
   publicBio: "這裡整理我做過、正在做或即將部署的公開工具。一般使用者可以直接進入服務，聚會、服事、練唱、活動需要什麼就點進去用。",
   location: "New Taipei City, Taiwan",
   email: "ricky400430012@gmail.com",
