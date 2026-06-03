@@ -6,7 +6,7 @@ export const PERSONAL_INFO = {
   publicTitle: "Ricky 的AI 工作室",
   tagline: "資深後端 / 全端工程師，專長把影像、AI 與硬體整合成能上線的系統。",
   publicTagline: "把聚會、投影、語音即時翻譯、領會伴唱和活動營運做成可以直接使用的網頁服務。",
-  bio: "擁有近 10 年軟體開發經驗的資深後端工程師，做過充電樁能源管理、智慧醫療影音串流、人臉辨識體溫量測、智慧停車與網路監控等正式上線系統，從架構、後端、前端到自架伺服器部署都能一手完成。曾將整套 .NET 後端翻寫為 Python / FastAPI、資料表砍半（30→15）並讓人臉辨識效能提升 5–10 倍，也帶領團隊與研華 ESG 合作奪下林口新創競賽冠軍（100 萬獎金）。主力技術為 Python、Go、.NET Core 與 Vue3 / React 全端，搭配 OpenCV、YOLO、FFmpeg 與 LSTM 處理影像、影音與 AI 模型，全部部署在自架 Ubuntu 伺服器並以 CI/CD 自動發佈。2025 年起深度與 AI 協作（Antigravity、Codex、NotebookLM），一個月學會 Go，並獨立上線串接 AI Vision + FFmpeg 的回憶影片生成、即時多語語音翻譯與多人連線遊戲等 Side Project。",
+  bio: "擁有近 10 年軟體開發經驗，做過充電樁能源管理、智慧醫療影音串流、人臉辨識體溫量測與智慧停車等正式上線系統，從架構、後端、前端到自架伺服器部署一手完成。曾將 .NET 後端翻寫為 Python / FastAPI 並讓人臉辨識效能提升 5–10 倍，帶領團隊與研華 ESG 合作奪下林口新創競賽冠軍（100 萬獎金）。2025 年起深度與 AI 協作，一個月學會 Go，持續打造能上線的產品與 Side Project。",
   publicBio: "這裡整理我做過、正在做或即將部署的公開工具。一般使用者可以直接進入服務，聚會、服事、練唱、活動需要什麼就點進去用。",
   location: "New Taipei City, Taiwan",
   email: "ricky400430012@gmail.com",
