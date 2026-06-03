@@ -12,6 +12,7 @@ export interface Project {
   repoName?: string;
   videoUrl?: string;
   mediaLabel?: string;
+  videos?: { label: string; url: string }[];
   featured?: boolean;
 }
 

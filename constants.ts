@@ -245,6 +245,10 @@ export const CAREER_PROJECTS: Project[] = [
     description: "透過 MR 頭盔、空間定位與影像處理，判斷把手、閥門、按鈕狀態，即時回傳操作步驟完成狀態。",
     highlights: ["影像取代 sensor", "AI 模型串接", "影像串流 API"],
     tech: ["Python", "FastAPI", "OpenCV", "AI", "Streaming"],
+    videos: [
+      { label: "▶ 角度偵測", url: "https://drive.google.com/file/d/1Ukkp2hZWYq0eJtvPKnxMKXKx7xtfpdit/preview" },
+      { label: "▶ 高度偵測", url: "https://drive.google.com/file/d/10k9r4C9Ia-UyhbE60FKXIl-V2zb7XROO/preview" },
+    ],
     repoName: "職涯案例",
   },
   {

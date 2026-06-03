@@ -8,6 +8,11 @@ interface ProjectCardProps {
   compact?: boolean;
 }
 
+interface MediaItem {
+  label: string;
+  url: string;
+}
+
 const statusStyles: Record<Project['status'], string> = {
   Live: "border-emerald-400/40 bg-emerald-400/10 text-emerald-200",
   Demo: "border-sky-400/40 bg-sky-400/10 text-sky-200",
@@ -41,7 +46,7 @@ const getEmbed = (raw: string): { type: 'video' | 'image' | 'iframe'; src: strin
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, compact = false }) => {
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
-  const [showVideo, setShowVideo] = useState(false);
+  const [activeMedia, setActiveMedia] = useState<MediaItem | null>(null);
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -52,9 +57,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, compact = false }) =
   };
 
   useEffect(() => {
-    if (!showVideo) return;
+    if (!activeMedia) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setShowVideo(false);
+      if (e.key === 'Escape') setActiveMedia(null);
     };
     document.body.style.overflow = 'hidden';
     window.addEventListener('keydown', onKey);
@@ -62,9 +67,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, compact = false }) =
       document.body.style.overflow = '';
       window.removeEventListener('keydown', onKey);
     };
-  }, [showVideo]);
+  }, [activeMedia]);
 
-  const media = project.videoUrl ? getEmbed(project.videoUrl) : null;
+  // 統一成媒體清單：多支影片用 videos，單支用 videoUrl。
+  const mediaItems: MediaItem[] = project.videos?.length
+    ? project.videos
+    : project.videoUrl
+      ? [{ label: project.mediaLabel || '▶ Demo 影片', url: project.videoUrl }]
+      : [];
+
+  const media = activeMedia ? getEmbed(activeMedia.url) : null;
 
   return (
     <article
@@ -118,18 +130,19 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, compact = false }) =
         </div>
 
         <div className="mt-auto flex flex-wrap gap-3">
-          {project.videoUrl && (
+          {mediaItems.map((item) => (
             <button
+              key={item.url}
               type="button"
               onClick={() => {
                 soundManager.playHover();
-                setShowVideo(true);
+                setActiveMedia(item);
               }}
               className="inline-flex items-center gap-1.5 rounded-sm border border-amber-400/40 bg-amber-400/10 px-4 py-2 text-sm font-bold text-amber-200 transition-colors hover:bg-amber-400 hover:text-slate-950"
             >
-              {project.mediaLabel || '▶ Demo 影片'}
+              {item.label}
             </button>
-          )}
+          ))}
           {project.url ? (
             <a
               href={project.url}
@@ -140,7 +153,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, compact = false }) =
               開啟網站
             </a>
           ) : (
-            !project.videoUrl && (
+            mediaItems.length === 0 && (
               <span className="rounded-sm border border-white/10 px-4 py-2 text-sm font-semibold text-slate-400">
                 尚未部署
               </span>
@@ -154,17 +167,19 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, compact = false }) =
         </div>
       </div>
 
-      {showVideo && media && createPortal(
+      {activeMedia && media && createPortal(
         <div
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 p-4 backdrop-blur-sm"
-          onClick={() => setShowVideo(false)}
+          onClick={() => setActiveMedia(null)}
         >
           <div className="relative w-full max-w-5xl" onClick={(e) => e.stopPropagation()}>
             <div className="mb-3 flex items-center justify-between gap-4">
-              <span className="text-sm font-semibold text-amber-200">{project.title} · Demo</span>
+              <span className="text-sm font-semibold text-amber-200">
+                {project.title} · {activeMedia.label.replace(/^▶\s*/, '')}
+              </span>
               <button
                 type="button"
-                onClick={() => setShowVideo(false)}
+                onClick={() => setActiveMedia(null)}
                 className="rounded-sm border border-white/20 px-3 py-1 text-sm text-slate-200 transition-colors hover:bg-white/10"
               >
                 關閉 ✕
