@@ -2,6 +2,7 @@ import React, { MouseEvent, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Project } from '../types';
 import { soundManager } from '../utils/audio';
+import { useI18n } from '../i18n';
 
 interface ProjectCardProps {
   project: Project;
@@ -18,13 +19,6 @@ const statusStyles: Record<Project['status'], string> = {
   Demo: "border-sky-400/40 bg-sky-400/10 text-sky-200",
   Local: "border-amber-400/40 bg-amber-400/10 text-amber-200",
   Planning: "border-zinc-400/40 bg-zinc-400/10 text-zinc-200",
-};
-
-const statusLabels: Record<Project['status'], string> = {
-  Live: "已上線",
-  Demo: "展示中",
-  Local: "本機作品",
-  Planning: "規劃中",
 };
 
 // 將各種素材連結轉成可嵌入格式：MP4 用 <video>、圖片用 <img>、YouTube / Google Drive 用 iframe。
@@ -45,6 +39,13 @@ const getEmbed = (raw: string): { type: 'video' | 'image' | 'iframe'; src: strin
 };
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, compact = false }) => {
+  const { t, section: secLabel } = useI18n();
+  const statusLabels: Record<Project['status'], string> = {
+    Live: t.card.statusLive,
+    Demo: t.card.statusDemo,
+    Local: t.card.statusLocal,
+    Planning: t.card.statusPlanning,
+  };
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
   const [activeMedia, setActiveMedia] = useState<MediaItem | null>(null);
 
@@ -73,7 +74,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, compact = false }) =
   const mediaItems: MediaItem[] = project.videos?.length
     ? project.videos
     : project.videoUrl
-      ? [{ label: project.mediaLabel || '▶ Demo 影片', url: project.videoUrl }]
+      ? [{ label: project.mediaLabel || t.card.defaultMedia, url: project.videoUrl }]
       : [];
 
   const media = activeMedia ? getEmbed(activeMedia.url) : null;
@@ -96,7 +97,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, compact = false }) =
           <div>
             <div className="mb-3 flex flex-wrap items-center gap-2">
               <span className="rounded-sm border border-white/10 bg-white/5 px-2.5 py-1 text-xs font-semibold text-slate-300">
-                {project.section}
+                {secLabel(project.section)}
               </span>
               <span className={`rounded-sm border px-2.5 py-1 text-xs font-semibold ${statusStyles[project.status]}`}>
                 {statusLabels[project.status]}
@@ -150,12 +151,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, compact = false }) =
               rel="noreferrer"
               className="rounded-sm bg-amber-400 px-4 py-2 text-sm font-bold text-slate-950 transition-colors hover:bg-amber-300"
             >
-              開啟網站
+              {t.card.openSite}
             </a>
           ) : (
             mediaItems.length === 0 && (
               <span className="rounded-sm border border-white/10 px-4 py-2 text-sm font-semibold text-slate-400">
-                尚未部署
+                {t.card.notDeployed}
               </span>
             )
           )}
@@ -182,7 +183,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, compact = false }) =
                 onClick={() => setActiveMedia(null)}
                 className="rounded-sm border border-white/20 px-3 py-1 text-sm text-slate-200 transition-colors hover:bg-white/10"
               >
-                關閉 ✕
+                {t.card.close}
               </button>
             </div>
             <div className="aspect-video w-full overflow-hidden rounded-lg bg-black shadow-2xl">

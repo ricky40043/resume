@@ -2,12 +2,26 @@ import { Experience, Project } from './types';
 
 export const PERSONAL_INFO = {
   name: "李柏儀 Ricky",
-  title: "資深後端 / AI 協作軟體架構師",
+  title: "資深後端 / 全端工程師",
   publicTitle: "Ricky 的AI 工作室",
-  tagline: "資深後端 / 全端工程師，專長把影像、AI 與硬體整合成能上線的系統。",
+  tagline: "後端架構 × 系統設計 × AI 落地",
   publicTagline: "把聚會、投影、語音即時翻譯、領會伴唱和活動營運做成可以直接使用的網頁服務。",
-  bio: "擁有近 10 年軟體開發經驗，做過充電樁能源管理、智慧醫療影音串流、人臉辨識體溫量測與智慧停車等正式上線系統，從架構、後端、前端到自架伺服器部署一手完成。曾將 .NET 後端翻寫為 Python / FastAPI 並讓人臉辨識效能提升 5–10 倍，帶領團隊與研華 ESG 合作奪下林口新創競賽冠軍（100 萬獎金）。2025 年起深度與 AI 協作，一個月學會 Go，持續打造能上線的產品與 Side Project。",
+  bio: "資深後端 / 全端工程師，近 10 年軟體開發經驗，主軸是後端架構、系統設計、資料庫設計、系統重構與自架部署。過去參與並主導過充電樁能源管理、智慧醫療影音串流、人臉辨識、智慧停車、網路監控、AIoT SaaS 與影像辨識巡檢等正式上線系統。曾將 .NET 後端翻寫為 Python / FastAPI，並將人臉辨識從單人升級為多人＋多執行緒運算，效能提升 5–10 倍。2025 年起深度整合 AI 工具（Claude、Antigravity、Codex、NotebookLM）到開發流程，一個月學會 Go，持續打造穩定、可維護、能上線的 Side Project。",
   publicBio: "這裡整理我做過、正在做或即將部署的公開工具。一般使用者可以直接進入服務，聚會、服事、練唱、活動需要什麼就點進去用。",
+  location: "New Taipei City, Taiwan",
+  email: "ricky400430012@gmail.com",
+  github: "",
+  resumeUrl: "/resume.pdf",
+};
+
+export const PERSONAL_INFO_EN = {
+  name: "Ricky Li",
+  title: "Senior Backend / Full-stack Engineer",
+  publicTitle: "Ricky's AI Studio",
+  tagline: "Backend Architecture × System Design × AI Integration",
+  publicTagline: "Turning gatherings, projection, real-time voice translation, vocal practice and event operations into ready-to-use web services.",
+  bio: "A senior backend / full-stack engineer with nearly 10 years of experience, focused on backend architecture, system design, database design, system refactoring and self-hosted deployment. I have shipped production systems across EV-charging energy management, smart-healthcare video streaming, facial recognition, smart parking, network monitoring, AIoT SaaS platforms and computer-vision inspection. I refactored a legacy .NET backend into Python / FastAPI and upgraded facial recognition from single- to multi-person with multi-threaded processing for a 5–10× performance gain. Since 2025 I have integrated AI tools (Claude, Antigravity, Codex, NotebookLM) deeply into my workflow, picking up Go in a month and continuously shipping stable, maintainable, production-ready side projects.",
+  publicBio: "A hub of the public tools I've built, am building, or am about to deploy. General users can jump straight in — whatever a gathering, ministry, vocal practice or event needs, just tap and use.",
   location: "New Taipei City, Taiwan",
   email: "ricky400430012@gmail.com",
   github: "",
@@ -582,6 +596,184 @@ export const EDUCATION = [
     period: "2012 - 2015",
   },
 ];
+
+// ──────────────────────────────────────────────
+// English content (英文版資料；section / id / url / tech 等不翻譯)
+// ──────────────────────────────────────────────
+
+export const SKILLS_CATEGORIES_EN = [
+  {
+    label: "Backend",
+    items: [
+      "Python / FastAPI",
+      ".NET Core / C#",
+      "SQLAlchemy / Entity Framework",
+      "RESTful API / scheduling",
+      "pytest unit testing",
+    ],
+  },
+  {
+    label: "Frontend",
+    items: [
+      "Vue3 / Pinia / TypeScript",
+      "ECharts / custom charts",
+      "Naive UI / Tailwind CSS",
+    ],
+  },
+  {
+    label: "Database",
+    items: ["MS SQL", "PostgreSQL", "SQLite", "Redis"],
+  },
+  {
+    label: "Vision / AI",
+    items: [
+      "OpenCV / facial recognition",
+      "YOLO object detection",
+      "LSTM time-series forecasting",
+      "FFmpeg / Demucs media processing",
+      "Gemini / OpenAI Vision",
+      "AOI optical inspection",
+    ],
+  },
+  {
+    label: "Deploy / Tools",
+    items: [
+      "Self-hosted Ubuntu Server",
+      "Docker / Nginx",
+      "CI/CD automation",
+      "MQTT / Edge AI",
+      "LINE Bot integration",
+      "AI pair-programming (Claude / Antigravity / Codex / NotebookLM)",
+    ],
+  },
+];
+
+export const KEY_STRENGTHS_EN = [
+  {
+    title: "Backend Architecture & System Analysis",
+    desc: "Requirement analysis, database design, API planning, scheduling, reporting and backend implementation — while keeping legacy compatibility and long-term maintainability.",
+  },
+  {
+    title: "Computer Vision & AIoT",
+    desc: "From AOI machines, OpenCV, facial recognition and temperature screening to network monitoring and smart-factory platforms — hands-on hardware-software integration and real-world deployment.",
+  },
+  {
+    title: "AI-Assisted Product Development",
+    desc: "Since 2025, working deeply with Claude, Antigravity, Codex and NotebookLM — built an AI streetlight inspection in a week, learned Go in a month, and rapidly ships production-ready side projects.",
+  },
+];
+
+export const EXPERIENCE_EN: Experience[] = [
+  {
+    role: "Senior Software Engineer",
+    company: "Excellent Technology Co., Ltd.",
+    period: "2024/03 - Present",
+    description: "Managed the software department and co-developed all projects, owning new modules, backend planning and API implementation. Key projects: EV-charging EMS / payment / operations dashboard, smart-healthcare video streaming / editing / live / SDVoE / PACS, and a LINE-based leave / clock-in / expense assistant.",
+  },
+  {
+    role: "Senior Backend / Full-stack Engineer",
+    company: "TenCha Intelligence",
+    period: "2023/06 - 2024/03",
+    description: "Led the AMS asset-management and EMS energy-management systems — system analysis, proposals, database, API, UI/UX planning and backend implementation. Also led Yilan smart roadside parking, integrating MQTT, geomagnetic sensors, occupancy and device-status analytics.",
+  },
+  {
+    role: "R&D Lead Engineer",
+    company: "SwiftMind Network Co., Ltd.",
+    period: "2021/06 - 2023/05",
+    description: "Backend architecture, API implementation, image-processing algorithm research and team leadership. Refactored the .NET backend into Python, slimmed the schema and boosted facial-recognition performance 5–10×; self-taught Vue3 to ship the first AIoT attendance & smart-factory platform; led the team with Advantech ESG to win the Linkou Startup Competition champion (NT$1M prize).",
+  },
+  {
+    role: "Software Engineer",
+    company: "GuangXin Technology",
+    period: "2016/09 - 2021/05",
+    description: "Focused on AOI optical inspection — image analysis, lighting setup, IO / motion-card SDK wrapping, automation flow and inspection algorithms. Worked on Wafer, PCB, Panel, LineScan and robotic pick-and-place machines.",
+  },
+];
+
+export const EDUCATION_EN = [
+  {
+    school: "Tamkang University",
+    department: "Dept. of Aerospace Engineering · Automatic Control",
+    period: "2015 - 2016",
+  },
+  {
+    school: "Tamkang University",
+    department: "Dept. of Aerospace Engineering",
+    period: "2012 - 2015",
+  },
+];
+
+type ProjectI18n = Pick<Project, 'title' | 'category' | 'description' | 'highlights'>;
+
+const EN_PROJECT_OVERRIDES: Record<number, ProjectI18n> = {
+  1: { title: "EV-Charging EMS, Payment & Operations Dashboard", category: "Excellent Tech / Energy Management", description: "Owned EV-charging energy-management, payment and operations-dashboard modules, supporting site, transaction and device monitoring for operators.", highlights: ["New modules & backend planning", "Payment & operations data integration", "API development"] },
+  2: { title: "Smart-Healthcare Video Streaming, Editing & Live Platform", category: "Excellent Tech / HealthTech", description: "Built a smart operating-room video streaming platform handling editing, live broadcast, SDVoE and PACS integration for medical environments.", highlights: ["PACS / SDVoE integration", "Video streaming & live", "Medical-grade system integration"] },
+  3: { title: "Leave / Clock-in / Expense Assistant", category: "Excellent Tech / Internal Tools", description: "Integrated a LINE menu with AI chat analysis to streamline internal leave, clock-in and expense workflows.", highlights: ["LINE menu integration", "AI chat analysis", "Internal process automation"] },
+  4: { title: "YOLO Streetlight-Outage Recognition & Auto Inspection", category: "Excellent Tech / Computer Vision", description: "Built a streetlight-outage recognition and automated inspection/acceptance system, feeding vision results into the inspection workflow.", highlights: ["YOLO recognition", "Inspection automation", "Vision results as data"] },
+  5: { title: "AMS Asset Management System", category: "TenCha / Smart Building", description: "Led the AMS module on a BIM platform, adding spare-parts management, asset stocktaking and device life-cycle tracking.", highlights: ["Spare-parts & stocktaking", "BIM device-management integration", "System analysis & proposals"] },
+  6: { title: "EMS Energy Management System", category: "TenCha / Energy Management", description: "Led the EMS module on a BIM platform — energy overview, electricity-cost calculation and contracted-power analysis to track usage trends and cost.", highlights: ["Energy overview & analysis", "Electricity cost & contracted power", "ECharts reports & scheduling"] },
+  7: { title: "Yilan Smart Roadside Parking", category: "TenCha / Smart City", description: "Led the parking-management modules, integrating BIM models, device management, repair flow and roadside hardware — MQTT integration, occupancy and device-status stats.", highlights: ["MQTT hardware integration", "API docs & DB design", "pytest with mock data"] },
+  8: { title: "Multi-Person Facial Recognition & Temperature Screening", category: "SwiftMind / AIoT", description: "Refactored the .NET backend into Python, cut the schema from ~30 to 15 tables, and supported multi-face recognition, temperature screening, visitor modeling, alerts and voice response.", highlights: ["5–10× performance gain", "Data-structure refactoring", "Multi-person recognition & frontal filtering"] },
+  9: { title: "AIoT SaaS Operations Platform", category: "SwiftMind / SaaS", description: "Smart-factory war-room and IoT monitoring platform integrating attendance, dashboards, bulletin boards, role-based access, group/zone management and floor plans — low-coupling design for fast customization.", highlights: ["Self-built full-stack architecture", "Many-to-many DB design", "Docker / Nginx deployment"] },
+  10: { title: "Network Monitoring System", category: "SwiftMind / Network Management", description: "Built a network-monitoring system from scratch with Python SNMP / Trap — topology, floor plans, proactive alerts and auto-scan device discovery.", highlights: ["SNMP / Trap", "Topology & floor plans", "Proactive alerting"] },
+  11: { title: "Exhibition Foot-Traffic Analytics", category: "SwiftMind / Foot-Traffic Analytics", description: "Counted entrance/exit foot traffic, peak/off-peak times and dwell time for trade-show flow and operations analysis.", highlights: ["Foot-traffic counting", "Dwell-time analysis", "Visitor flow planning"] },
+  12: { title: "Air-Compressor Smart-Factory ESG Platform (Startup Competition Champion)", category: "SwiftMind / ESG AIoT", description: "Monitored air-compressor sensor data, used an AI LSTM model to infer usage patterns, and visualized machine health, leakage, power usage and dashboards; led the team through semifinals and finals over 3 months to win the Linkou Startup Competition champion with Advantech ESG (NT$1M prize).", highlights: ["Linkou Startup Competition champion (NT$1M)", "Led team & POC planning", "AI LSTM model & data generation"] },
+  13: { title: "ITRI MR Training System", category: "SwiftMind / MR & Vision", description: "Using an MR headset, spatial positioning and image processing to detect handle, valve and button states and report step completion in real time.", highlights: ["Vision instead of sensors", "AI model integration", "Video-streaming API"] },
+  14: { title: "Inventory & Customer-Service Ticketing System", category: "SwiftMind / Internal Management", description: "Role-based access, purchasing, inventory, shipping quotes, ticket-status flow, returns/closing and chat windows — owned requirements, UX, backend architecture and project scheduling.", highlights: ["Permission & flow design", "Many-to-many DB design", "Microsoft AD integration"] },
+  16: { title: "Smart Used-Clothing Recycling Machine", category: "SwiftMind / AI Vision", description: "A smart recycling system: users drop in clothing, scan a QR code to bind the machine by location, then AI vision auto-classifies shirts/pants/coats and scores by wear to award points redeemable for goods or food — a complete points-based recycling system.", highlights: ["Passed Stage 1 of 'Social Innovation · Call for 100'", "AI vision classification & wear scoring", "QR + GPS machine binding"] },
+  15: { title: "AOI Optical Inspection & Machine Development", category: "GuangXin / Industrial Automation", description: "Owned AOI image analysis, lighting setup, IO/motion-card SDK wrapping, automation flow and inspection algorithms across Wafer, PCB, Panel and LineScan machines.", highlights: ["Wafer label recognition", "PCB 2D barcode / laser cutting", "Panel defects & robotic pick-and-place"] },
+  101: { title: "Time Bomb", category: "Gathering Interaction", description: "A bomb-passing icebreaker for gatherings — whoever holds it when time's up answers a question or takes a challenge, instantly warming up the room.", highlights: ["Gathering icebreaker", "Question challenges", "Mobile friendly"] },
+  102: { title: "1A2B Number Guessing", category: "Gathering Interaction", description: "The classic 1A2B deduction game — great for small groups, friends or filling wait time together.", highlights: ["Deduction guessing", "Quick start", "Party mini-game"] },
+  103: { title: "Two Types of People", category: "Gathering Interaction", description: "Two-choice prompts that get everyone sharing fast — perfect for breaking the ice and sparking laughs and discussion.", highlights: ["Either/or prompts", "Quick get-to-know", "Warms up the room"] },
+  104: { title: "Quiz Duel", category: "Gathering Interaction", description: "A two-player Q&A duel — great for small-group interaction, friendly challenges or light competition at gatherings.", highlights: ["Two-player Q&A", "Interactive duel", "Gathering challenge"] },
+  105: { title: "Who Is the Spy", category: "Gathering Interaction", description: "The classic multiplayer deduction game — each person describes their word to find who got a different one.", highlights: ["Multiplayer online", "Role deduction", "Party must-play"] },
+  106: { title: "Two Types of People (Online)", category: "Gathering Interaction", description: "An online version of the either/or icebreaker — people on different devices choose and see results together.", highlights: ["Multiplayer online", "Either/or interaction", "Live results"] },
+  107: { title: "Snake", category: "Single-player Game", description: "The classic single-player snake challenge — simple controls, see how long you can grow.", highlights: ["Single-player challenge", "Simple controls", "Mobile friendly"] },
+  108: { title: "Multiplayer Snake", category: "Multiplayer Online", description: "An online multiplayer battle version of snake — compete with friends to survive the longest.", highlights: ["Multiplayer online", "Real-time battle", "Party must-play"] },
+  109: { title: "2048", category: "Single-player Puzzle", description: "The number-merging puzzle — slide tiles to combine matching numbers and reach 2048.", highlights: ["Puzzle challenge", "Number merging", "Mobile friendly"] },
+  201: { title: "Hymn Database", category: "Church Projection Tool", description: "A hymn database with search API, crawler import and PPTX generation — lyric normalization, hash dedup and a fixed SQLite seed for deployment.", highlights: ["16,000+ hymns", "Search & PPTX API", "Self-hosted Docker"] },
+  202: { title: "Hymn Slides", category: "Church Projection Tool", description: "A hymn-slide tool for projection volunteers; paired with the hymn database it forms a workflow from finding songs to generating slides.", highlights: ["Hymn projection flow", "Fast slide generation", "Built for live ministry"] },
+  203: { title: "Bible Projection", category: "Church Projection Tool", description: "A Bible projection and auto-PPT system — host/projection sync, QR-code join, multiple Bible versions and service-slide formats.", highlights: ["Real-time WebSocket sync", "Auto PPT generation", "Multiple Bible versions"] },
+  204: { title: "VocalTune Studio", category: "AI Media Tool", description: "A YouTube tool built for vocal practice — download, pitch shift, tempo change, vocal removal and multi-track volume control.", highlights: ["YouTube download", "Pitch / tempo", "AI vocal removal"] },
+  205: { title: "VocalTune KTV", category: "AI Media Tool", description: "A karaoke mode for vocal practice — AI auto-separates vocals and accompaniment, real-time pitch shifting to sing along, with a song queue and personal singing history.", highlights: ["AI vocal-removal karaoke", "Real-time pitch shift", "Song queue"] },
+  206: { title: "Real-time Voice Translation", category: "Real-time Collaboration", description: "Supports voice input, real-time translation, multi-user rooms, personal-language subtitles and a unified main-board language — ideal for cross-language events or gatherings.", highlights: ["Real-time voice translation", "Multi-user subtitles", "Main-board display"] },
+  207: { title: "Ad-free YouTube", category: "Media Tool", description: "A YouTube-like PWA supporting video search, playback, background play, lock-screen controls and an ad-free streaming experience.", highlights: ["Background play", "Media Session API", "yt-dlp streaming"] },
+  208: { title: "8-Planet Simulator", category: "Interactive Visual", description: "A solar-system orbit simulation showcasing 3D / Canvas interactive visuals and frontend animation.", highlights: ["Planet orbits", "Interactive visual", "Static deployment"] },
+  209: { title: "Christmas Market", category: "Event Operations System", description: "A complete market payment-management system — customer top-up, QR-code scanning, vendor POS, product management, transaction reports and an admin backend.", highlights: ["QR-code payment", "Vendor POS", "Admin backend & reports"] },
+  210: { title: "Heartwarming Dog Video Generator", category: "AI Video Editing", description: "A system that auto-edits memory videos — FFmpeg frame extraction, AI Vision interaction analysis, producing highlight clips with Chinese descriptions.", highlights: ["Video upload tasks", "AI Vision analysis", "FFmpeg auto-editing"] },
+  211: { title: "Board-Game Rental System", category: "Rental Management Platform", description: "A board-game rental platform with member auth, rental management, LINE notifications, AI recommendations and backend API docs.", highlights: ["JWT auth", "LINE Bot integration", "AI recommendations"] },
+};
+
+function localizeProjects(list: Project[], lang: 'zh' | 'en'): Project[] {
+  if (lang === 'zh') return list;
+  return list.map((p) => {
+    const ov = EN_PROJECT_OVERRIDES[p.id];
+    return ov ? { ...p, ...ov } : p;
+  });
+}
+
+export interface SiteContent {
+  personal: typeof PERSONAL_INFO;
+  careerProjects: Project[];
+  publicProjects: Project[];
+  skills: typeof SKILLS_CATEGORIES;
+  strengths: typeof KEY_STRENGTHS;
+  experience: Experience[];
+  education: typeof EDUCATION;
+}
+
+export function getContent(lang: 'zh' | 'en'): SiteContent {
+  const en = lang === 'en';
+  return {
+    personal: en ? PERSONAL_INFO_EN : PERSONAL_INFO,
+    careerProjects: localizeProjects(CAREER_PROJECTS, lang),
+    publicProjects: localizeProjects(PUBLIC_PROJECTS, lang),
+    skills: en ? SKILLS_CATEGORIES_EN : SKILLS_CATEGORIES,
+    strengths: en ? KEY_STRENGTHS_EN : KEY_STRENGTHS,
+    experience: en ? EXPERIENCE_EN : EXPERIENCE,
+    education: en ? EDUCATION_EN : EDUCATION,
+  };
+}
 
 export const SYSTEM_INSTRUCTION = `
 你是李柏儀 Ricky 的個人作品集 AI 助手。

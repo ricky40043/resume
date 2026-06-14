@@ -1,15 +1,25 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { sendMessageToGemini } from '../services/geminiService';
 import { ChatMessage } from '../types';
+import { useI18n } from '../i18n';
 
 const AIChatWidget: React.FC = () => {
+  const { t, lang } = useI18n();
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([
-    { role: 'model', text: "你好！我是 Ricky 的作品集助手。想了解他的技能、專案或適合職缺，我可以幫你整理。" }
+    { role: 'model', text: t.chat.greeting }
   ]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // 切換語言時，若還停留在初始問候語則一併更新
+  useEffect(() => {
+    setMessages((prev) => (prev.length === 1 && prev[0].role === 'model'
+      ? [{ role: 'model', text: t.chat.greeting }]
+      : prev));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lang]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -48,8 +58,8 @@ const AIChatWidget: React.FC = () => {
                 AI
               </div>
               <div>
-                <h3 className="text-white font-semibold text-sm">個人助手</h3>
-                <p className="text-cyan-200 text-xs">作品集問答</p>
+                <h3 className="text-white font-semibold text-sm">{t.chat.title}</h3>
+                <p className="text-cyan-200 text-xs">{t.chat.subtitle}</p>
               </div>
             </div>
             <button 
@@ -99,7 +109,7 @@ const AIChatWidget: React.FC = () => {
                 type="text" 
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="詢問關於作品或履歷的問題..."
+                placeholder={t.chat.placeholder}
                 className="w-full bg-white/5 border border-white/10 rounded-full py-2.5 px-4 pr-12 text-sm text-white focus:outline-none focus:border-cyan-500/50 focus:bg-white/10 transition-all placeholder-white/30"
               />
               <button 
