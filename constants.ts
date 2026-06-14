@@ -37,7 +37,7 @@ export const NAV_ITEMS = [
   { label: "聯絡", href: "#contact" },
 ];
 
-export const RESUME_SECTIONS = ["全部", "職涯實戰", "卓越科技", "天茶智能", "迅智網路", "光欣科技", "公開作品"];
+export const RESUME_SECTIONS = ["全部", "職涯實戰", "三傑物聯", "天茶智能", "迅智網路", "光欣科技", "公開作品"];
 
 export const PUBLIC_SECTIONS = ["全部", "破冰遊戲", "投影同工", "領會伴唱", "工具類", "其他專案"];
 
@@ -107,8 +107,8 @@ export const CAREER_PROJECTS: Project[] = [
   {
     id: 1,
     title: "充電樁 EMS、金流、後台戰情分析平台",
-    category: "卓越科技 / 能源管理",
-    section: "卓越科技",
+    category: "三傑物聯 / 能源管理",
+    section: "三傑物聯",
     status: "Demo",
     description: "負責充電樁能源管理、金流與後台戰情分析相關模組，支援營運端監控站點、交易與設備狀態。",
     highlights: ["新模組與後端規劃", "金流與營運資料整合", "API 開發實作"],
@@ -119,8 +119,8 @@ export const CAREER_PROJECTS: Project[] = [
   {
     id: 2,
     title: "智慧醫療影音串流、剪輯、直播平台",
-    category: "卓越科技 / 醫療科技",
-    section: "卓越科技",
+    category: "三傑物聯 / 醫療科技",
+    section: "三傑物聯",
     status: "Demo",
     description: "開發智慧醫療開刀房影音串流平台，處理剪輯、直播、SDVoE 串接與 PACS 串接等醫療場域需求。",
     highlights: ["PACS / SDVoE 串接", "影音串流與直播", "醫療場域系統整合"],
@@ -131,8 +131,8 @@ export const CAREER_PROJECTS: Project[] = [
   {
     id: 3,
     title: "請假打卡報帳小幫手",
-    category: "卓越科技 / 企業內部工具",
-    section: "卓越科技",
+    category: "三傑物聯 / 企業內部工具",
+    section: "三傑物聯",
     status: "Demo",
     description: "串接 LINE 選單與 AI 聊天分析，協助公司內部請假、打卡、報帳等流程工具化。",
     highlights: ["LINE 選單串接", "AI 聊天分析", "內部流程自動化"],
@@ -142,8 +142,8 @@ export const CAREER_PROJECTS: Project[] = [
   {
     id: 4,
     title: "YOLO 路燈不亮影像辨識與自動巡檢估驗",
-    category: "卓越科技 / 影像辨識",
-    section: "卓越科技",
+    category: "三傑物聯 / 影像辨識",
+    section: "三傑物聯",
     status: "Demo",
     description: "開發路燈不亮影像辨識與自動巡檢估驗系統，將影像辨識結果導入巡檢與估驗流程。",
     highlights: ["YOLO 影像辨識", "巡檢流程自動化", "影像結果資料化"],
@@ -560,7 +560,7 @@ export const PROJECTS: Project[] = [...CAREER_PROJECTS, ...PUBLIC_PROJECTS];
 export const EXPERIENCE: Experience[] = [
   {
     role: "資深軟體工程師",
-    company: "卓越科技股份有限公司",
+    company: "三傑物聯股份有限公司",
     period: "2024/03 - 至今",
     description: "管理軟體部門並共同開發所有專案，負責新模組、後端規劃與 API 實作。主要專案包含充電樁 EMS / 金流 / 後台戰情分析、智慧醫療影音串流 / 剪輯 / 直播 / SDVoE / PACS，以及請假打卡報帳小幫手。",
   },
@@ -666,25 +666,25 @@ export const KEY_STRENGTHS_EN = [
 export const EXPERIENCE_EN: Experience[] = [
   {
     role: "Senior Software Engineer",
-    company: "Excellent Technology Co., Ltd.",
+    company: "三傑物聯股份有限公司",
     period: "2024/03 - Present",
     description: "Managed the software department and co-developed all projects, owning new modules, backend planning and API implementation. Key projects: EV-charging EMS / payment / operations dashboard, smart-healthcare video streaming / editing / live / SDVoE / PACS, and a LINE-based leave / clock-in / expense assistant.",
   },
   {
     role: "Senior Backend / Full-stack Engineer",
-    company: "TenCha Intelligence",
+    company: "天茶智能",
     period: "2023/06 - 2024/03",
     description: "Led the AMS asset-management and EMS energy-management systems — system analysis, proposals, database, API, UI/UX planning and backend implementation. Also led Yilan smart roadside parking, integrating MQTT, geomagnetic sensors, occupancy and device-status analytics.",
   },
   {
     role: "R&D Lead Engineer",
-    company: "SwiftMind Network Co., Ltd.",
+    company: "迅智網路有限公司",
     period: "2021/06 - 2023/05",
     description: "Backend architecture, API implementation, image-processing algorithm research and team leadership. Refactored the .NET backend into Python, slimmed the schema and boosted facial-recognition performance 5–10×; self-taught Vue3 to ship the first AIoT attendance & smart-factory platform; led the team with Advantech ESG to win the Linkou Startup Competition champion (NT$1M prize).",
   },
   {
     role: "Software Engineer",
-    company: "GuangXin Technology",
+    company: "光欣科技",
     period: "2016/09 - 2021/05",
     description: "Focused on AOI optical inspection — image analysis, lighting setup, IO / motion-card SDK wrapping, automation flow and inspection algorithms. Worked on Wafer, PCB, Panel, LineScan and robotic pick-and-place machines.",
   },
@@ -706,22 +706,22 @@ export const EDUCATION_EN = [
 type ProjectI18n = Pick<Project, 'title' | 'category' | 'description' | 'highlights'>;
 
 const EN_PROJECT_OVERRIDES: Record<number, ProjectI18n> = {
-  1: { title: "EV-Charging EMS, Payment & Operations Dashboard", category: "Excellent Tech / Energy Management", description: "Owned EV-charging energy-management, payment and operations-dashboard modules, supporting site, transaction and device monitoring for operators.", highlights: ["New modules & backend planning", "Payment & operations data integration", "API development"] },
-  2: { title: "Smart-Healthcare Video Streaming, Editing & Live Platform", category: "Excellent Tech / HealthTech", description: "Built a smart operating-room video streaming platform handling editing, live broadcast, SDVoE and PACS integration for medical environments.", highlights: ["PACS / SDVoE integration", "Video streaming & live", "Medical-grade system integration"] },
-  3: { title: "Leave / Clock-in / Expense Assistant", category: "Excellent Tech / Internal Tools", description: "Integrated a LINE menu with AI chat analysis to streamline internal leave, clock-in and expense workflows.", highlights: ["LINE menu integration", "AI chat analysis", "Internal process automation"] },
-  4: { title: "YOLO Streetlight-Outage Recognition & Auto Inspection", category: "Excellent Tech / Computer Vision", description: "Built a streetlight-outage recognition and automated inspection/acceptance system, feeding vision results into the inspection workflow.", highlights: ["YOLO recognition", "Inspection automation", "Vision results as data"] },
-  5: { title: "AMS Asset Management System", category: "TenCha / Smart Building", description: "Led the AMS module on a BIM platform, adding spare-parts management, asset stocktaking and device life-cycle tracking.", highlights: ["Spare-parts & stocktaking", "BIM device-management integration", "System analysis & proposals"] },
-  6: { title: "EMS Energy Management System", category: "TenCha / Energy Management", description: "Led the EMS module on a BIM platform — energy overview, electricity-cost calculation and contracted-power analysis to track usage trends and cost.", highlights: ["Energy overview & analysis", "Electricity cost & contracted power", "ECharts reports & scheduling"] },
-  7: { title: "Yilan Smart Roadside Parking", category: "TenCha / Smart City", description: "Led the parking-management modules, integrating BIM models, device management, repair flow and roadside hardware — MQTT integration, occupancy and device-status stats.", highlights: ["MQTT hardware integration", "API docs & DB design", "pytest with mock data"] },
-  8: { title: "Multi-Person Facial Recognition & Temperature Screening", category: "SwiftMind / AIoT", description: "Refactored the .NET backend into Python, cut the schema from ~30 to 15 tables, and supported multi-face recognition, temperature screening, visitor modeling, alerts and voice response.", highlights: ["5–10× performance gain", "Data-structure refactoring", "Multi-person recognition & frontal filtering"] },
-  9: { title: "AIoT SaaS Operations Platform", category: "SwiftMind / SaaS", description: "Smart-factory war-room and IoT monitoring platform integrating attendance, dashboards, bulletin boards, role-based access, group/zone management and floor plans — low-coupling design for fast customization.", highlights: ["Self-built full-stack architecture", "Many-to-many DB design", "Docker / Nginx deployment"] },
-  10: { title: "Network Monitoring System", category: "SwiftMind / Network Management", description: "Built a network-monitoring system from scratch with Python SNMP / Trap — topology, floor plans, proactive alerts and auto-scan device discovery.", highlights: ["SNMP / Trap", "Topology & floor plans", "Proactive alerting"] },
-  11: { title: "Exhibition Foot-Traffic Analytics", category: "SwiftMind / Foot-Traffic Analytics", description: "Counted entrance/exit foot traffic, peak/off-peak times and dwell time for trade-show flow and operations analysis.", highlights: ["Foot-traffic counting", "Dwell-time analysis", "Visitor flow planning"] },
-  12: { title: "Air-Compressor Smart-Factory ESG Platform (Startup Competition Champion)", category: "SwiftMind / ESG AIoT", description: "Monitored air-compressor sensor data, used an AI LSTM model to infer usage patterns, and visualized machine health, leakage, power usage and dashboards; led the team through semifinals and finals over 3 months to win the Linkou Startup Competition champion with Advantech ESG (NT$1M prize).", highlights: ["Linkou Startup Competition champion (NT$1M)", "Led team & POC planning", "AI LSTM model & data generation"] },
-  13: { title: "ITRI MR Training System", category: "SwiftMind / MR & Vision", description: "Using an MR headset, spatial positioning and image processing to detect handle, valve and button states and report step completion in real time.", highlights: ["Vision instead of sensors", "AI model integration", "Video-streaming API"] },
-  14: { title: "Inventory & Customer-Service Ticketing System", category: "SwiftMind / Internal Management", description: "Role-based access, purchasing, inventory, shipping quotes, ticket-status flow, returns/closing and chat windows — owned requirements, UX, backend architecture and project scheduling.", highlights: ["Permission & flow design", "Many-to-many DB design", "Microsoft AD integration"] },
-  16: { title: "Smart Used-Clothing Recycling Machine", category: "SwiftMind / AI Vision", description: "A smart recycling system: users drop in clothing, scan a QR code to bind the machine by location, then AI vision auto-classifies shirts/pants/coats and scores by wear to award points redeemable for goods or food — a complete points-based recycling system.", highlights: ["Passed Stage 1 of 'Social Innovation · Call for 100'", "AI vision classification & wear scoring", "QR + GPS machine binding"] },
-  15: { title: "AOI Optical Inspection & Machine Development", category: "GuangXin / Industrial Automation", description: "Owned AOI image analysis, lighting setup, IO/motion-card SDK wrapping, automation flow and inspection algorithms across Wafer, PCB, Panel and LineScan machines.", highlights: ["Wafer label recognition", "PCB 2D barcode / laser cutting", "Panel defects & robotic pick-and-place"] },
+  1: { title: "EV-Charging EMS, Payment & Operations Dashboard", category: "三傑物聯 / Energy Management", description: "Owned EV-charging energy-management, payment and operations-dashboard modules, supporting site, transaction and device monitoring for operators.", highlights: ["New modules & backend planning", "Payment & operations data integration", "API development"] },
+  2: { title: "Smart-Healthcare Video Streaming, Editing & Live Platform", category: "三傑物聯 / HealthTech", description: "Built a smart operating-room video streaming platform handling editing, live broadcast, SDVoE and PACS integration for medical environments.", highlights: ["PACS / SDVoE integration", "Video streaming & live", "Medical-grade system integration"] },
+  3: { title: "Leave / Clock-in / Expense Assistant", category: "三傑物聯 / Internal Tools", description: "Integrated a LINE menu with AI chat analysis to streamline internal leave, clock-in and expense workflows.", highlights: ["LINE menu integration", "AI chat analysis", "Internal process automation"] },
+  4: { title: "YOLO Streetlight-Outage Recognition & Auto Inspection", category: "三傑物聯 / Computer Vision", description: "Built a streetlight-outage recognition and automated inspection/acceptance system, feeding vision results into the inspection workflow.", highlights: ["YOLO recognition", "Inspection automation", "Vision results as data"] },
+  5: { title: "AMS Asset Management System", category: "天茶智能 / Smart Building", description: "Led the AMS module on a BIM platform, adding spare-parts management, asset stocktaking and device life-cycle tracking.", highlights: ["Spare-parts & stocktaking", "BIM device-management integration", "System analysis & proposals"] },
+  6: { title: "EMS Energy Management System", category: "天茶智能 / Energy Management", description: "Led the EMS module on a BIM platform — energy overview, electricity-cost calculation and contracted-power analysis to track usage trends and cost.", highlights: ["Energy overview & analysis", "Electricity cost & contracted power", "ECharts reports & scheduling"] },
+  7: { title: "Yilan Smart Roadside Parking", category: "天茶智能 / Smart City", description: "Led the parking-management modules, integrating BIM models, device management, repair flow and roadside hardware — MQTT integration, occupancy and device-status stats.", highlights: ["MQTT hardware integration", "API docs & DB design", "pytest with mock data"] },
+  8: { title: "Multi-Person Facial Recognition & Temperature Screening", category: "迅智網路 / AIoT", description: "Refactored the .NET backend into Python, cut the schema from ~30 to 15 tables, and supported multi-face recognition, temperature screening, visitor modeling, alerts and voice response.", highlights: ["5–10× performance gain", "Data-structure refactoring", "Multi-person recognition & frontal filtering"] },
+  9: { title: "AIoT SaaS Operations Platform", category: "迅智網路 / SaaS", description: "Smart-factory war-room and IoT monitoring platform integrating attendance, dashboards, bulletin boards, role-based access, group/zone management and floor plans — low-coupling design for fast customization.", highlights: ["Self-built full-stack architecture", "Many-to-many DB design", "Docker / Nginx deployment"] },
+  10: { title: "Network Monitoring System", category: "迅智網路 / Network Management", description: "Built a network-monitoring system from scratch with Python SNMP / Trap — topology, floor plans, proactive alerts and auto-scan device discovery.", highlights: ["SNMP / Trap", "Topology & floor plans", "Proactive alerting"] },
+  11: { title: "Exhibition Foot-Traffic Analytics", category: "迅智網路 / Foot-Traffic Analytics", description: "Counted entrance/exit foot traffic, peak/off-peak times and dwell time for trade-show flow and operations analysis.", highlights: ["Foot-traffic counting", "Dwell-time analysis", "Visitor flow planning"] },
+  12: { title: "Air-Compressor Smart-Factory ESG Platform (Startup Competition Champion)", category: "迅智網路 / ESG AIoT", description: "Monitored air-compressor sensor data, used an AI LSTM model to infer usage patterns, and visualized machine health, leakage, power usage and dashboards; led the team through semifinals and finals over 3 months to win the Linkou Startup Competition champion with Advantech ESG (NT$1M prize).", highlights: ["Linkou Startup Competition champion (NT$1M)", "Led team & POC planning", "AI LSTM model & data generation"] },
+  13: { title: "ITRI MR Training System", category: "迅智網路 / MR & Vision", description: "Using an MR headset, spatial positioning and image processing to detect handle, valve and button states and report step completion in real time.", highlights: ["Vision instead of sensors", "AI model integration", "Video-streaming API"] },
+  14: { title: "Inventory & Customer-Service Ticketing System", category: "迅智網路 / Internal Management", description: "Role-based access, purchasing, inventory, shipping quotes, ticket-status flow, returns/closing and chat windows — owned requirements, UX, backend architecture and project scheduling.", highlights: ["Permission & flow design", "Many-to-many DB design", "Microsoft AD integration"] },
+  16: { title: "Smart Used-Clothing Recycling Machine", category: "迅智網路 / AI Vision", description: "A smart recycling system: users drop in clothing, scan a QR code to bind the machine by location, then AI vision auto-classifies shirts/pants/coats and scores by wear to award points redeemable for goods or food — a complete points-based recycling system.", highlights: ["Passed Stage 1 of 'Social Innovation · Call for 100'", "AI vision classification & wear scoring", "QR + GPS machine binding"] },
+  15: { title: "AOI Optical Inspection & Machine Development", category: "光欣科技 / Industrial Automation", description: "Owned AOI image analysis, lighting setup, IO/motion-card SDK wrapping, automation flow and inspection algorithms across Wafer, PCB, Panel and LineScan machines.", highlights: ["Wafer label recognition", "PCB 2D barcode / laser cutting", "Panel defects & robotic pick-and-place"] },
   101: { title: "Time Bomb", category: "Gathering Interaction", description: "A bomb-passing icebreaker for gatherings — whoever holds it when time's up answers a question or takes a challenge, instantly warming up the room.", highlights: ["Gathering icebreaker", "Question challenges", "Mobile friendly"] },
   102: { title: "1A2B Number Guessing", category: "Gathering Interaction", description: "The classic 1A2B deduction game — great for small groups, friends or filling wait time together.", highlights: ["Deduction guessing", "Quick start", "Party mini-game"] },
   103: { title: "Two Types of People", category: "Gathering Interaction", description: "Two-choice prompts that get everyone sharing fast — perfect for breaking the ice and sparking laughs and discussion.", highlights: ["Either/or prompts", "Quick get-to-know", "Warms up the room"] },
@@ -781,7 +781,7 @@ export const SYSTEM_INSTRUCTION = `
 
 定位：${PERSONAL_INFO.title}
 簡介：${PERSONAL_INFO.bio}
-職涯重點：卓越科技充電樁 EMS / 智慧醫療影音串流 / LINE 與 AI 內部工具；天茶智能 AMS / EMS / 宜蘭智慧停車；迅智網路 AIOT、人臉辨識、網路監控、空壓機 ESG 智慧工廠（與研華 ESG 合作奪林口新創競賽冠軍、100 萬獎金）、MR 教育訓練；光欣科技 AOI 自動光學檢測。
+職涯重點：三傑物聯充電樁 EMS / 智慧醫療影音串流 / LINE 與 AI 內部工具；天茶智能 AMS / EMS / 宜蘭智慧停車；迅智網路 AIOT、人臉辨識、網路監控、空壓機 ESG 智慧工廠（與研華 ESG 合作奪林口新創競賽冠軍、100 萬獎金）、MR 教育訓練；光欣科技 AOI 自動光學檢測。
 公開作品：${PUBLIC_PROJECTS.filter((project) => project.featured).map((project) => project.title).join('、')}。
 主要能力：Python FastAPI、.NET Core、C#、Go、Vue3、React、MS SQL、PostgreSQL、SQLite、Redis、Docker、Nginx、OpenCV、MQTT、LINE Bot、AI 協作開發。
 
