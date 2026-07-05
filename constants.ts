@@ -553,6 +553,19 @@ export const PUBLIC_PROJECTS: Project[] = [
     url: "https://board-game.ricky-nova.com",
     repoName: "tableGameBorrowSystem",
   },
+  {
+    id: 212,
+    title: "小說轉漫畫 Prompt 工作台",
+    category: "AI 創作工具",
+    section: "其他專案",
+    status: "Live",
+    description: "把小說轉成漫畫分鏡的 AI Prompt 工作台：匯入小說，管理角色 / 風格 / 服裝 / 場景 / 分鏡，產出可直接餵給繪圖 AI 或 NotebookLM 的 Prompt，支援 Markdown / DOCX 匯出。",
+    highlights: ["小說轉漫畫分鏡", "角色 / 風格 / 場景管理", "Prompt 一鍵匯出"],
+    tech: ["Vue 3", "TypeScript", "FastAPI", "SQLite", "OpenRouter"],
+    url: "https://manga.ricky-nova.com",
+    repoName: "novel_to_comic",
+    featured: true,
+  },
 ];
 
 export const PROJECTS: Project[] = [...CAREER_PROJECTS, ...PUBLIC_PROJECTS];
@@ -742,6 +755,7 @@ const EN_PROJECT_OVERRIDES: Record<number, ProjectI18n> = {
   209: { title: "Christmas Market", category: "Event Operations System", description: "A complete market payment-management system — customer top-up, QR-code scanning, vendor POS, product management, transaction reports and an admin backend.", highlights: ["QR-code payment", "Vendor POS", "Admin backend & reports"] },
   210: { title: "Heartwarming Dog Video Generator", category: "AI Video Editing", description: "A system that auto-edits memory videos — FFmpeg frame extraction, AI Vision interaction analysis, producing highlight clips with Chinese descriptions.", highlights: ["Video upload tasks", "AI Vision analysis", "FFmpeg auto-editing"] },
   211: { title: "Board-Game Rental System", category: "Rental Management Platform", description: "A board-game rental platform with member auth, rental management, LINE notifications, AI recommendations and backend API docs.", highlights: ["JWT auth", "LINE Bot integration", "AI recommendations"] },
+  212: { title: "Novel-to-Manga Prompt Studio", category: "AI Creative Tool", description: "An AI prompt workbench that turns novels into manga storyboards: import a novel, manage characters / style / costumes / scenes / panels, and export prompts ready for image-gen AI or NotebookLM (Markdown / DOCX).", highlights: ["Novel to manga storyboard", "Character / style / scene manager", "One-click prompt export"] },
 };
 
 function localizeProjects(list: Project[], lang: 'zh' | 'en'): Project[] {
