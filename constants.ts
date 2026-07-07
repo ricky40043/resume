@@ -562,7 +562,7 @@ export const PUBLIC_PROJECTS: Project[] = [
     description: "把小說轉成漫畫分鏡的 AI Prompt 工作台：匯入小說，管理角色 / 風格 / 服裝 / 場景 / 分鏡，產出可直接餵給繪圖 AI 或 NotebookLM 的 Prompt，支援 Markdown / DOCX 匯出。",
     highlights: ["小說轉漫畫分鏡", "角色 / 風格 / 場景管理", "Prompt 一鍵匯出"],
     tech: ["Vue 3", "TypeScript", "FastAPI", "SQLite", "OpenRouter"],
-    url: "https://manga.ricky-nova.com",
+    url: "https://noveltocomic.ricky-nova.com",
     repoName: "novel_to_comic",
     featured: true,
   },
