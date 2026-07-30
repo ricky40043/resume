@@ -567,6 +567,18 @@ export const PUBLIC_PROJECTS: Project[] = [
     featured: true,
   },
   {
+    id: 213,
+    title: "聖誕市集 管理後台",
+    category: "活動營運系統",
+    section: "其他專案",
+    status: "Demo",
+    description: "聖誕市集金流平台的主辦方管理後台，管理顧客儲值、攤商 POS 與交易報表。",
+    highlights: ["顧客儲值管理", "攤商 POS 檢視", "即時交易報表"],
+    tech: ["Vue", "TypeScript", "FastAPI", "SQLAlchemy", "Docker"],
+    url: "https://christmas-admin.ricky-nova.com",
+    repoName: "Christmas Market Payment Platform",
+  },
+  {
     id: 210,
     title: "狗狗感人影片生成",
     category: "AI 影片剪輯",
@@ -796,6 +808,7 @@ const EN_PROJECT_OVERRIDES: Record<number, ProjectI18n> = {
   210: { title: "Heartwarming Dog Video Generator", category: "AI Video Editing", description: "A system that auto-edits memory videos — FFmpeg frame extraction, AI Vision interaction analysis, producing highlight clips with Chinese descriptions.", highlights: ["Video upload tasks", "AI Vision analysis", "FFmpeg auto-editing"] },
   211: { title: "Board-Game Rental System", category: "Rental Management Platform", description: "A board-game rental platform with member auth, rental management, LINE notifications, AI recommendations and backend API docs.", highlights: ["JWT auth", "LINE Bot integration", "AI recommendations"] },
   212: { title: "Novel-to-Manga Prompt Studio", category: "AI Creative Tool", description: "An AI prompt workbench that turns novels into manga storyboards: import a novel, manage characters / style / costumes / scenes / panels, and export prompts ready for image-gen AI or NotebookLM (Markdown / DOCX).", highlights: ["Novel to manga storyboard", "Character / style / scene manager", "One-click prompt export"] },
+  213: { title: "Christmas Market Admin", category: "Event Operations System", description: "The organizer-side admin backend for the Christmas Market payment platform — manages customer top-ups, vendor POS and transaction reports.", highlights: ["Customer top-up management", "Vendor POS overview", "Real-time transaction reports"] },
 };
 
 function localizeProjects(list: Project[], lang: 'zh' | 'en'): Project[] {
