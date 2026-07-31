@@ -615,6 +615,19 @@ export const PUBLIC_PROJECTS: Project[] = [
     repoName: "novel_to_comic",
     featured: true,
   },
+  {
+    id: 214,
+    title: "小說轉影片 編輯器",
+    category: "AI 影音剪輯工具",
+    section: "其他專案",
+    status: "Live",
+    description: "瀏覽器端的多軌影片剪輯器，支援時間軸剪輯、素材管理、即時預覽與匯出，所有素材與運算都在本機瀏覽器完成，不上傳雲端；衍生自開源專案 OpenCut，並加入繁體中文介面切換。",
+    highlights: ["瀏覽器端多軌剪輯", "本機處理不上傳", "繁體中文介面"],
+    tech: ["Next.js", "TypeScript", "Rust / WASM", "IndexedDB", "Docker"],
+    url: "https://novel-video.ricky-nova.com",
+    repoName: "novel-to-video-editor",
+    featured: true,
+  },
 ];
 
 export const PROJECTS: Project[] = [...CAREER_PROJECTS, ...PUBLIC_PROJECTS];
@@ -809,6 +822,7 @@ const EN_PROJECT_OVERRIDES: Record<number, ProjectI18n> = {
   211: { title: "Board-Game Rental System", category: "Rental Management Platform", description: "A board-game rental platform with member auth, rental management, LINE notifications, AI recommendations and backend API docs.", highlights: ["JWT auth", "LINE Bot integration", "AI recommendations"] },
   212: { title: "Novel-to-Manga Prompt Studio", category: "AI Creative Tool", description: "An AI prompt workbench that turns novels into manga storyboards: import a novel, manage characters / style / costumes / scenes / panels, and export prompts ready for image-gen AI or NotebookLM (Markdown / DOCX).", highlights: ["Novel to manga storyboard", "Character / style / scene manager", "One-click prompt export"] },
   213: { title: "Christmas Market Admin", category: "Event Operations System", description: "The organizer-side admin backend for the Christmas Market payment platform — manages customer top-ups, vendor POS and transaction reports.", highlights: ["Customer top-up management", "Vendor POS overview", "Real-time transaction reports"] },
+  214: { title: "Novel To Video Editor", category: "AI Video Editing", description: "A browser-based multi-track video editor with timeline editing, media management, live preview and export — everything runs locally in the browser, nothing is uploaded. Forked from the open-source OpenCut project, with an added Traditional Chinese interface toggle.", highlights: ["Browser-based multi-track editing", "100% local processing", "Traditional Chinese UI"] },
 };
 
 function localizeProjects(list: Project[], lang: 'zh' | 'en'): Project[] {

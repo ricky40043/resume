@@ -389,6 +389,7 @@ const PROJECT_ICON: Record<string, string> = {
   "聖誕市集": "🎄",
   "狗狗感人影片生成": "🐾",
   "桌遊租借系統": "♟️",
+  "小說轉影片 編輯器": "🎞️",
 };
 
 const ToolTile: React.FC<{ project: Project; large?: boolean }> = ({ project, large = false }) => {
