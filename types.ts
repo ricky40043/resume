@@ -3,7 +3,7 @@ export interface Project {
   title: string;
   category: string;
   section: string;
-  status: 'Live' | 'Demo' | 'Local' | 'Planning';
+  status: 'Live' | 'Demo' | 'Local' | 'Planning' | 'Testing';
   image?: string;
   description: string;
   highlights: string[];
