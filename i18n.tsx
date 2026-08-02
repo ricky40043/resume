@@ -14,13 +14,10 @@ const LanguageContext = createContext<LanguageContextValue | null>(null);
 
 function readInitialLang(): Lang {
   if (typeof window === 'undefined') return 'zh';
-  // 1) 網址 ?lang=en|zh 優先（方便分享指定語言連結）
   const param = new URLSearchParams(window.location.search).get('lang')?.toLowerCase();
   if (param === 'en' || param === 'zh') return param;
-  // 2) 使用者上次選擇
   const stored = window.localStorage.getItem(STORAGE_KEY);
   if (stored === 'en' || stored === 'zh') return stored;
-  // 3) 預設依瀏覽器語言：非中文使用者預設英文
   const nav = window.navigator.language?.toLowerCase() ?? '';
   return nav.startsWith('zh') ? 'zh' : 'en';
 }
@@ -56,7 +53,6 @@ export function useLang(): LanguageContextValue {
   return ctx;
 }
 
-// ── 區塊名稱顯示對照（filter/lookup 仍用中文 key，只有顯示換語言）──
 const SECTION_LABELS: Record<string, { zh: string; en: string }> = {
   "全部": { zh: "全部", en: "All" },
   "職涯實戰": { zh: "職涯實戰", en: "Career Work" },
@@ -76,7 +72,6 @@ export function sectionLabel(key: string, lang: Lang): string {
   return SECTION_LABELS[key]?.[lang] ?? key;
 }
 
-// ── UI 文字字典 ──
 const STRINGS = {
   zh: {
     common: {
@@ -142,6 +137,7 @@ const STRINGS = {
       statusDemo: '展示中',
       statusLocal: '本機作品',
       statusPlanning: '規劃中',
+      statusTesting: '測試中',
       openSite: '開啟網站',
       notDeployed: '尚未部署',
       close: '關閉 ✕',
@@ -222,6 +218,7 @@ const STRINGS = {
       statusDemo: 'Demo',
       statusLocal: 'Local',
       statusPlanning: 'Planning',
+      statusTesting: 'Testing',
       openSite: 'Open Site',
       notDeployed: 'Not deployed',
       close: 'Close ✕',
