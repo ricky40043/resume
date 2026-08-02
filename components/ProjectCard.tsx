@@ -19,9 +19,9 @@ const statusStyles: Record<Project['status'], string> = {
   Demo: "border-sky-400/40 bg-sky-400/10 text-sky-200",
   Local: "border-amber-400/40 bg-amber-400/10 text-amber-200",
   Planning: "border-zinc-400/40 bg-zinc-400/10 text-zinc-200",
+  Testing: "border-fuchsia-400/40 bg-fuchsia-400/10 text-fuchsia-200",
 };
 
-// 將各種素材連結轉成可嵌入格式：MP4 用 <video>、圖片用 <img>、YouTube / Google Drive 用 iframe。
 const getEmbed = (raw: string): { type: 'video' | 'image' | 'iframe'; src: string } => {
   if (/\.(mp4|webm|ogg)(\?.*)?$/i.test(raw)) {
     return { type: 'video', src: raw };
@@ -33,7 +33,6 @@ const getEmbed = (raw: string): { type: 'video' | 'image' | 'iframe'; src: strin
   if (yt) {
     return { type: 'iframe', src: `https://www.youtube.com/embed/${yt[1]}?autoplay=1&rel=0` };
   }
-  // Google Drive 或其他（影片 / 簡報 / PDF）：確保是 /preview 嵌入網址
   const src = raw.replace(/\/view(\?[^#]*)?(#.*)?$/, '/preview');
   return { type: 'iframe', src };
 };
@@ -45,6 +44,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, compact = false }) =
     Demo: t.card.statusDemo,
     Local: t.card.statusLocal,
     Planning: t.card.statusPlanning,
+    Testing: t.card.statusTesting,
   };
   const [cursorPos, setCursorPos] = useState({ x: 0, y: 0 });
   const [activeMedia, setActiveMedia] = useState<MediaItem | null>(null);
@@ -70,7 +70,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, compact = false }) =
     };
   }, [activeMedia]);
 
-  // 統一成媒體清單：多支影片用 videos，單支用 videoUrl。
   const mediaItems: MediaItem[] = project.videos?.length
     ? project.videos
     : project.videoUrl
