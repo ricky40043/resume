@@ -38,6 +38,18 @@ const studioGameAdditions: Project[] = [
     url: "https://games.ricky-nova.com/word-chain/",
     repoName: "HTML Game",
   },
+  {
+    id: 116,
+    title: "猜人 Guess Who",
+    category: "多人匿名問答",
+    section: "破冰遊戲",
+    status: "Live",
+    description: "多人即時匿名派對遊戲。玩家先回答生活化問題，系統把每個人的整組答案匿名成「同學 A、B…」，最後所有人一對一配對猜出誰是誰，猜對最多者獲勝。內建 50 題題庫、可自訂題目，支援斷線重連。",
+    highlights: ["6 碼房號 + WebSocket 即時同步", "固定匿名映射、逐人公布答案", "手機一對一配對猜人與計分排行"],
+    tech: ["Go", "WebSocket", "TypeScript", "Docker"],
+    url: "https://guess-who.ricky-nova.com",
+    repoName: "guess-who-game",
+  },
 ];
 
 const existingIds = new Set(PUBLIC_PROJECTS.map((project) => project.id));
