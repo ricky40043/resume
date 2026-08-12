@@ -604,7 +604,7 @@ export const PUBLIC_PROJECTS: Project[] = [
   },
   {
     id: 212,
-    title: "小說轉漫畫 Prompt 工作台",
+    title: "AI 小說轉漫畫",
     category: "AI 創作工具",
     section: "其他專案",
     status: "Live",
@@ -820,7 +820,7 @@ const EN_PROJECT_OVERRIDES: Record<number, ProjectI18n> = {
   209: { title: "Christmas Market", category: "Event Operations System", description: "A complete market payment-management system — customer top-up, QR-code scanning, vendor POS, product management, transaction reports and an admin backend.", highlights: ["QR-code payment", "Vendor POS", "Admin backend & reports"] },
   210: { title: "Heartwarming Dog Video Generator", category: "AI Video Editing", description: "A system that auto-edits memory videos — FFmpeg frame extraction, AI Vision interaction analysis, producing highlight clips with Chinese descriptions.", highlights: ["Video upload tasks", "AI Vision analysis", "FFmpeg auto-editing"] },
   211: { title: "Board-Game Rental System", category: "Rental Management Platform", description: "A board-game rental platform with member auth, rental management, LINE notifications, AI recommendations and backend API docs.", highlights: ["JWT auth", "LINE Bot integration", "AI recommendations"] },
-  212: { title: "Novel-to-Manga Prompt Studio", category: "AI Creative Tool", description: "An AI prompt workbench that turns novels into manga storyboards: import a novel, manage characters / style / costumes / scenes / panels, and export prompts ready for image-gen AI or NotebookLM (Markdown / DOCX).", highlights: ["Novel to manga storyboard", "Character / style / scene manager", "One-click prompt export"] },
+  212: { title: "AI Novel-to-Manga", category: "AI Creative Tool", description: "An AI workbench that turns novels into manga storyboards: import a novel, manage characters / style / costumes / scenes / panels, and export prompts ready for image-gen AI or NotebookLM (Markdown / DOCX).", highlights: ["Novel to manga storyboard", "Character / style / scene manager", "One-click prompt export"] },
   213: { title: "Christmas Market Admin", category: "Event Operations System", description: "The organizer-side admin backend for the Christmas Market payment platform — manages customer top-ups, vendor POS and transaction reports.", highlights: ["Customer top-up management", "Vendor POS overview", "Real-time transaction reports"] },
   214: { title: "Novel To Video Editor", category: "AI Video Editing", description: "A browser-based multi-track video editor with timeline editing, media management, live preview and export — everything runs locally in the browser, nothing is uploaded. Forked from the open-source OpenCut project, with an added Traditional Chinese interface toggle.", highlights: ["Browser-based multi-track editing", "100% local processing", "Traditional Chinese UI"] },
 };
