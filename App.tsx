@@ -11,6 +11,7 @@ import {
   getContent,
 } from './constants';
 import { useI18n } from './i18n';
+import { BrandIcon, SectionIcon, ServiceIcon, ServiceIconStyles } from './components/ServiceIcons';
 
 function usePathname() {
   const [pathname, setPathname] = useState(window.location.pathname);
@@ -335,61 +336,32 @@ function ResumePage() {
   );
 }
 
-const SECTION_META: Record<string, { icon: string; short: { zh: string; en: string }; color: string; bg: string }> = {
+const SECTION_META: Record<string, { short: { zh: string; en: string }; color: string; bg: string }> = {
   "破冰遊戲": {
-    icon: "🎲",
     short: { zh: "聚會炒熱氣氛", en: "Warm up gatherings" },
     color: "from-[#ff6b6b] to-[#ff9f1c]",
     bg: "bg-[#fff1e6]",
   },
   "投影同工": {
-    icon: "🎬",
     short: { zh: "詩歌、聖經、投影片", en: "Hymns, Bible, slides" },
     color: "from-[#00b4d8] to-[#4361ee]",
     bg: "bg-[#e8f5ff]",
   },
   "領會伴唱": {
-    icon: "🎤",
     short: { zh: "升降調、YouTube 下載、卡拉 OK", en: "Pitch shift, YouTube, karaoke" },
     color: "from-[#b5179e] to-[#f72585]",
     bg: "bg-[#fff0f6]",
   },
   "工具類": {
-    icon: "🧰",
     short: { zh: "語音即時翻譯、影音、實用工具", en: "Voice translation, media, utilities" },
     color: "from-[#06d6a0] to-[#118ab2]",
     bg: "bg-[#e9fff7]",
   },
   "其他專案": {
-    icon: "✨",
     short: { zh: "有趣實驗與完整系統", en: "Fun experiments & full systems" },
     color: "from-[#7c5cff] to-[#4cc9f0]",
     bg: "bg-[#f1efff]",
   },
-};
-
-const PROJECT_ICON: Record<string, string> = {
-  "定時炸彈": "💣",
-  "1A2B 猜數字": "🔢",
-  "2 種人": "🔀",
-  "你問我答": "🙋",
-  "誰是臥底": "🕵️",
-  "2 種人連線版": "🌐",
-  "貪吃蛇": "🐍",
-  "多人貪吃蛇": "🐍",
-  "2048": "🎮",
-  "詩歌資料庫": "📚",
-  "詩歌投影片": "🎵",
-  "聖經投影": "📖",
-  "下載與升降調": "🎧",
-  "卡拉 OK 領會伴唱": "🎤",
-  "語音即時翻譯": "🌐",
-  "無廣告版 YouTube": "▶️",
-  "8 大行星模擬器": "🪐",
-  "聖誕市集": "🎄",
-  "狗狗感人影片生成": "🐾",
-  "桌遊租借系統": "♟️",
-  "小說轉影片 編輯器": "🎞️",
 };
 
 const ToolTile: React.FC<{ project: Project; large?: boolean }> = ({ project, large = false }) => {
@@ -402,8 +374,8 @@ const ToolTile: React.FC<{ project: Project; large?: boolean }> = ({ project, la
       <div className={`relative flex h-full min-h-[260px] flex-col overflow-hidden rounded-[22px] ${meta.bg} p-5`}>
         <div className={`absolute inset-x-0 top-0 h-2 bg-gradient-to-r ${meta.color}`} />
         <div className="flex items-start justify-between gap-4">
-          <div className={`flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br ${meta.color} text-4xl shadow-lg shadow-slate-900/10`}>
-            <span className="drop-shadow-sm">{PROJECT_ICON[project.title] || meta.icon}</span>
+          <div className={`flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${meta.color} text-white shadow-lg shadow-slate-900/10 transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-105`}>
+            <ServiceIcon name={project.title} section={project.section} className="h-9 w-9 drop-shadow-sm" />
           </div>
           <span className={`rounded-full px-3 py-1 text-xs font-black ${isReady ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-100 text-slate-500'}`}>
             {isReady ? t.card.tileReady : t.card.tilePreparing}
@@ -471,10 +443,13 @@ function AiStudioPage() {
 
   return (
     <Shell variant="aiStudio">
+      <ServiceIconStyles />
       <nav className={`fixed left-0 right-0 top-0 z-40 transition-all duration-300 ${scrolled ? 'border-b-4 border-slate-950 bg-white/90 py-3 shadow-lg backdrop-blur-xl' : 'py-6'}`}>
         <div className="container mx-auto flex items-center justify-between gap-5 px-6">
-          <a href="#top" onMouseEnter={() => soundManager.playHover()} className="flex items-center gap-3 text-xl font-black tracking-tight text-slate-950 md:text-2xl">
-            <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#ffcf56] text-xl shadow-[0_5px_0_#111827]">🧰</span>
+          <a href="#top" onMouseEnter={() => soundManager.playHover()} className="group flex items-center gap-3 text-xl font-black tracking-tight text-slate-950 md:text-2xl">
+            <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-[#ffcf56] text-slate-950 shadow-[0_5px_0_#111827] transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-105">
+              <BrandIcon className="h-6 w-6" />
+            </span>
             {t.studio.brand}
           </a>
           <div className="hidden items-center gap-2 text-sm font-black text-slate-700 lg:flex">
@@ -527,8 +502,8 @@ function AiStudioPage() {
                       className={`group rounded-3xl border-[3px] border-white ${meta.bg} p-4 shadow-sm transition-transform hover:-translate-y-1`}
                     >
                       <div className="mb-3 flex items-center justify-between">
-                        <span className={`flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${meta.color} text-2xl shadow-md`}>
-                          {meta.icon}
+                        <span className={`flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${meta.color} text-white shadow-md transition-transform duration-300 group-hover:-rotate-3 group-hover:scale-105`}>
+                          <SectionIcon name={s} className="h-7 w-7 drop-shadow-sm" />
                         </span>
                         <span className="rounded-full bg-white px-3 py-1 text-sm font-black text-slate-700">{count}</span>
                       </div>
