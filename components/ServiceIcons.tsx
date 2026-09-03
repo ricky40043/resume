@@ -22,7 +22,7 @@ import React from 'react';
 /* ------------------------------------------------------------------ */
 
 const CSS = `
-.svc { overflow: visible; }
+.svc { overflow: visible; display: block; width: 100%; height: 100%; }
 .svc g, .svc path, .svc circle, .svc rect, .svc ellipse, .svc line, .svc polyline, .svc polygon, .svc text {
   transform-box: fill-box;
   transform-origin: 50% 50%;
@@ -41,69 +41,56 @@ const CSS = `
 .svc .sv-c { transition-delay: .15s; animation-delay: .24s; }
 .svc .sv-d { transition-delay: .20s; animation-delay: .32s; }
 
-/* 靜止狀態 */
-.svc .sv-pop     { opacity: 0; transform: scale(.35); }
-.svc .sv-move    { transform: translate(0,0) rotate(0) scale(1); }
-.svc .sv-draw    { stroke-dasharray: 100; stroke-dashoffset: 34; }
-.svc .sv-glow    { fill-opacity: .18; }
-
-/* hover 狀態 */
-.group:hover .svc .sv-pop,
-.svc:hover .sv-pop        { opacity: 1; transform: scale(1); }
-.group:hover .svc .sv-vanish,
-.svc:hover .sv-vanish     { opacity: 0; transform: scale(.4); }
-.group:hover .svc .sv-move,
-.svc:hover .sv-move       { transform: translate(var(--tx,0px), var(--ty,0px)) rotate(var(--r,0deg)) scale(var(--s,1)); }
-.group:hover .svc .sv-merge,
-.svc:hover .sv-merge      { transform: translate(var(--tx,0px), var(--ty,0px)) rotate(var(--r,0deg)) scale(var(--s,1)); opacity: 0; }
-.group:hover .svc .sv-draw,
-.svc:hover .sv-draw       { stroke-dashoffset: 0; }
-.group:hover .svc .sv-glow,
-.svc:hover .sv-glow       { fill-opacity: .62; }
-
-.group:hover .svc .sv-spin,
-.svc:hover .sv-spin       { transform: rotate(360deg); }
-.group:hover .svc .sv-orbit,
-.svc:hover .sv-orbit      { animation: sv-rot 3.6s linear infinite; }
-.group:hover .svc .sv-orbit-fast,
-.svc:hover .sv-orbit-fast { animation: sv-rot 1.9s linear infinite; }
-.group:hover .svc .sv-tick,
-.svc:hover .sv-tick       { animation: sv-tick .82s ease-in-out infinite; }
-.group:hover .svc .sv-bob,
-.svc:hover .sv-bob        { animation: sv-bob .9s ease-in-out infinite; }
-.group:hover .svc .sv-float,
-.svc:hover .sv-float      { animation: sv-float 1.25s ease-out infinite; }
-.group:hover .svc .sv-beat,
-.svc:hover .sv-beat       { animation: sv-beat .78s ease-in-out infinite; }
-.group:hover .svc .sv-shake,
-.svc:hover .sv-shake      { animation: sv-shake .5s ease-in-out infinite; }
-.group:hover .svc .sv-bar,
-.svc:hover .sv-bar        { animation: sv-bar .78s ease-in-out infinite; }
-.group:hover .svc .sv-flow,
-.svc:hover .sv-flow       { animation: sv-flow .9s linear infinite; }
-.group:hover .svc .sv-twinkle,
-.svc:hover .sv-twinkle    { animation: sv-twinkle 1s ease-in-out infinite; }
-.group:hover .svc .sv-ripple,
-.svc:hover .sv-ripple     { animation: sv-ripple 1.4s ease-out infinite; }
-
+/* 基礎靜止預設 */
+.svc .sv-pop { opacity: 0; transform: scale(.35); }
+.svc .sv-glow { fill-opacity: .18; }
 .svc .sv-bar { transform-origin: 50% 100%; }
 
-@keyframes sv-rot     { to   { transform: rotate(360deg); } }
-@keyframes sv-tick    { 0%,100% { transform: rotate(-19deg); } 50% { transform: rotate(19deg); } }
-@keyframes sv-bob     { 0%,100% { transform: translateY(0); }   50% { transform: translateY(-3.5px); } }
-@keyframes sv-float   { 0%   { transform: translateY(2px) scale(.7); opacity: 0; }
-                        25%  { opacity: 1; }
-                        100% { transform: translateY(-13px) scale(1.05); opacity: 0; } }
-@keyframes sv-beat    { 0%,100% { transform: scale(1); } 45% { transform: scale(1.22); } }
-@keyframes sv-shake   { 0%,100% { transform: translateX(0) rotate(0); }
-                        25%  { transform: translateX(-1.6px) rotate(-6deg); }
-                        75%  { transform: translateX(1.6px) rotate(6deg); } }
-@keyframes sv-bar     { 0%,100% { transform: scaleY(.42); } 50% { transform: scaleY(1); } }
-@keyframes sv-flow    { to   { stroke-dashoffset: -24; } }
-@keyframes sv-twinkle { 0%,100% { transform: scale(.72) rotate(0deg); opacity: .55; }
-                        50%  { transform: scale(1.18) rotate(45deg); opacity: 1; } }
-@keyframes sv-ripple  { 0%   { transform: scale(.55); opacity: .9; }
-                        100% { transform: scale(1.5);  opacity: 0; } }
+/* 全圖示持續微動，具有生命呼吸感；hover 則加速 */
+.svc .sv-pop { animation: sv-popC 3.4s cubic-bezier(.34,1.3,.64,1) infinite; }
+.svc .sv-vanish { animation: sv-vanishC 3.4s ease-in-out infinite; }
+.svc .sv-move { animation: sv-moveC 3.4s cubic-bezier(.34,1.3,.64,1) infinite; }
+.svc .sv-merge { animation: sv-mergeC 3.4s cubic-bezier(.34,1.2,.64,1) infinite; }
+.svc .sv-glow { animation: sv-glowC 2.6s ease-in-out infinite; }
+.svc .sv-spin { animation: sv-rot 7s linear infinite; }
+.svc .sv-orbit { animation: sv-rot 5.4s linear infinite; }
+.svc .sv-orbit-fast { animation: sv-rot 2.8s linear infinite; }
+.svc .sv-tick { animation: sv-tick 1.5s ease-in-out infinite; }
+.svc .sv-bob { animation: sv-bob 1.9s ease-in-out infinite; }
+.svc .sv-float { animation: sv-float 2.4s ease-out infinite; }
+.svc .sv-beat { animation: sv-beat 1.5s ease-in-out infinite; }
+.svc .sv-bar { animation: sv-bar 1.4s ease-in-out infinite; }
+.svc .sv-flow { animation: sv-flow 1.8s linear infinite; }
+.svc .sv-twinkle { animation: sv-twinkle 2.2s ease-in-out infinite; }
+.svc .sv-ripple { animation: sv-ripple 2.4s ease-out infinite; }
+
+[data-tilt]:hover .svc [class*="sv-"],
+.cf-card:hover .svc [class*="sv-"],
+.group:hover .svc [class*="sv-"] { animation-duration: 1.15s; }
+
+[data-tilt]:hover .svc .sv-spin,
+[data-tilt]:hover .svc .sv-orbit,
+.cf-card:hover .svc .sv-spin,
+.cf-card:hover .svc .sv-orbit,
+.group:hover .svc .sv-spin,
+.group:hover .svc .sv-orbit { animation-duration: 3s; }
+
+@keyframes sv-popC { 0%, 12% { opacity: 0; transform: scale(.35); } 32%, 72% { opacity: 1; transform: scale(1); } 92%, 100% { opacity: 0; transform: scale(.35); } }
+@keyframes sv-vanishC { 0%, 12% { opacity: 1; transform: scale(1); } 32%, 72% { opacity: 0; transform: scale(.4); } 92%, 100% { opacity: 1; transform: scale(1); } }
+@keyframes sv-moveC { 0%, 10% { transform: none; } 34%, 70% { transform: translate(var(--tx,0px), var(--ty,0px)) rotate(var(--r,0deg)) scale(var(--s,1)); } 90%, 100% { transform: none; } }
+@keyframes sv-mergeC { 0%, 10% { transform: none; opacity: 1; } 34%, 70% { transform: translate(var(--tx,0px), var(--ty,0px)) rotate(var(--r,0deg)) scale(var(--s,1)); opacity: 0; } 90%, 100% { transform: none; opacity: 1; } }
+@keyframes sv-glowC { 0%, 100% { fill-opacity: .18; } 50% { fill-opacity: .66; } }
+
+@keyframes sv-rot { to { transform: rotate(360deg); } }
+@keyframes sv-tick { 0%,100% { transform: rotate(-19deg); } 50% { transform: rotate(19deg); } }
+@keyframes sv-bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-3.5px); } }
+@keyframes sv-float { 0% { transform: translateY(2px) scale(.7); opacity: 0; } 25% { opacity: 1; } 100% { transform: translateY(-13px) scale(1.05); opacity: 0; } }
+@keyframes sv-beat { 0%,100% { transform: scale(1); } 45% { transform: scale(1.22); } }
+@keyframes sv-shake { 0%,100% { transform: translateX(0) rotate(0); } 25% { transform: translateX(-1.6px) rotate(-6deg); } 75% { transform: translateX(1.6px) rotate(6deg); } }
+@keyframes sv-bar { 0%,100% { transform: scaleY(.42); } 50% { transform: scaleY(1); } }
+@keyframes sv-flow { to { stroke-dashoffset: -24; } }
+@keyframes sv-twinkle { 0%,100% { transform: scale(.72) rotate(0deg); opacity: .55; } 50% { transform: scale(1.18) rotate(45deg); opacity: 1; } }
+@keyframes sv-ripple { 0% { transform: scale(.55); opacity: .9; } 100% { transform: scale(1.5); opacity: 0; } }
 
 @media (prefers-reduced-motion: reduce) {
   .svc [class*="sv-"] { transition: none !important; animation: none !important; }
@@ -799,6 +786,18 @@ const PROJECT_ICONS: Record<string, React.ReactNode> = {
       </g>
       <path className="sv-move sv-b" style={mv(26, 0)} d="M9 31 v10" strokeWidth={2.6} />
       <circle className="sv-move sv-b" style={mv(26, 0)} cx="9" cy="30" r="2.6" fill="currentColor" stroke="none" />
+    </g>
+  ),
+
+  /** 軟體工程學習：螢幕 + 代碼 < > → hover 展開 */
+  '軟體工程學習': (
+    <g {...stroke}>
+      <rect x="5" y="9" width="38" height="26" rx="6" fill="currentColor" fillOpacity={0.24} strokeWidth={2.8} />
+      <path d="M18 40 h12" strokeWidth={2.8} />
+      <path d="M24 35 v5" strokeWidth={2.8} />
+      <path className="sv-move" style={mv(-2, 0)} d="M20 17 L14 22 L20 27" strokeWidth={2.8} />
+      <path className="sv-move sv-b" style={mv(2, 0)} d="M28 17 L34 22 L28 27" strokeWidth={2.8} />
+      <Spark x={40} y={6} r={4} className="sv-twinkle sv-c" />
     </g>
   ),
 };

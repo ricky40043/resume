@@ -7,46 +7,73 @@ import { ServiceIcon, ServiceIconStyles } from './ServiceIcons';
 
 /**
  * AI Studio 宇宙版 — 每個服務是一顆發光星球，卡片組成星系。
- * 移植自 Claude Design 的「AI Studio 宇宙版」原型：星空 Canvas 視差、
- * 背景相片輪播、卡片 3D 傾斜與點擊「曲速跳躍」轉場皆為手刻邏輯搬過來的。
- * 星球材質改成 CSS 漸層＋SVG 圖示程式生成（不用點陣貼圖），避免每顆星球
- * 都要另外背一份圖，也讓 30 個服務長期好維護。
+ * 完整移植自「AI Studio 宇宙版 (單檔版).html」：真實星球自轉貼圖、
+ * 前後層行星環、繞軌月球、人造衛星、黑洞吸積盤與奇異點、星空 Canvas 視差、
+ * 縮圖輪播切換、卡片 3D 傾斜與曲速跳躍星球飛出特效。
  */
 
 /* ------------------------------------------------------------------ */
 /* 資料                                                                 */
 /* ------------------------------------------------------------------ */
 
-const BG_PHOTOS: { file: string; name: { zh: string; en: string } }[] = [
-  { file: '/cosmic/bg/01-nebula-blue-1920.jpg', name: { zh: '藍星雲', en: 'Blue Nebula' } },
-  { file: '/cosmic/bg/02-cloud-planet-1920.jpg', name: { zh: '雲海行星', en: 'Cloud Planet' } },
-  { file: '/cosmic/bg/03-solar-system-1920.jpg', name: { zh: '太陽系', en: 'Solar System' } },
-  { file: '/cosmic/bg/04-orbit-sunrise-1920.jpg', name: { zh: '軌道日出', en: 'Orbit Sunrise' } },
-  { file: '/cosmic/bg/05-sky-galaxy-1920.jpg', name: { zh: '旋渦星系', en: 'Spiral Galaxy' } },
-  { file: '/cosmic/bg/06-hubble-1920.jpg', name: { zh: '哈伯棒旋', en: 'Hubble Spiral' } },
-  { file: '/cosmic/bg/07-night-lake-1920.jpg', name: { zh: '湖畔星夜', en: 'Starry Lake' } },
-  { file: '/cosmic/bg/08-drifting-1920.jpg', name: { zh: '遠航艦隊', en: 'Drifting Fleet' } },
-  { file: '/cosmic/bg/09-mars-dawn-1920.jpg', name: { zh: '火星拂曉', en: 'Mars Dawn' } },
-  { file: '/cosmic/bg/10-planet-galaxy-1920.jpg', name: { zh: '銀河行星', en: 'Galaxy Planet' } },
+const BG_PHOTOS: { file: string; thumb: string; name: { zh: string; en: string } }[] = [
+  { file: '/cosmic/bg/01-nebula-blue-1920.jpg', thumb: '/cosmic/bg/01-nebula-blue-thumb.jpg', name: { zh: '藍星雲', en: 'Blue Nebula' } },
+  { file: '/cosmic/bg/02-cloud-planet-1920.jpg', thumb: '/cosmic/bg/02-cloud-planet-thumb.jpg', name: { zh: '雲海行星', en: 'Cloud Planet' } },
+  { file: '/cosmic/bg/03-solar-system-1920.jpg', thumb: '/cosmic/bg/03-solar-system-thumb.jpg', name: { zh: '太陽系', en: 'Solar System' } },
+  { file: '/cosmic/bg/04-orbit-sunrise-1920.jpg', thumb: '/cosmic/bg/04-orbit-sunrise-thumb.jpg', name: { zh: '軌道日出', en: 'Orbit Sunrise' } },
+  { file: '/cosmic/bg/05-sky-galaxy-1920.jpg', thumb: '/cosmic/bg/05-sky-galaxy-thumb.jpg', name: { zh: '旋渦星系', en: 'Spiral Galaxy' } },
+  { file: '/cosmic/bg/06-hubble-1920.jpg', thumb: '/cosmic/bg/06-hubble-thumb.jpg', name: { zh: '哈伯棒旋', en: 'Hubble Spiral' } },
+  { file: '/cosmic/bg/07-night-lake-1920.jpg', thumb: '/cosmic/bg/07-night-lake-thumb.jpg', name: { zh: '湖畔星夜', en: 'Starry Lake' } },
+  { file: '/cosmic/bg/08-drifting-1920.jpg', thumb: '/cosmic/bg/08-drifting-thumb.jpg', name: { zh: '遠航艦隊', en: 'Drifting Fleet' } },
+  { file: '/cosmic/bg/09-mars-dawn-1920.jpg', thumb: '/cosmic/bg/09-mars-dawn-thumb.jpg', name: { zh: '火星拂曉', en: 'Mars Dawn' } },
+  { file: '/cosmic/bg/10-planet-galaxy-1920.jpg', thumb: '/cosmic/bg/10-planet-galaxy-thumb.jpg', name: { zh: '銀河行星', en: 'Galaxy Planet' } },
 ];
 
 type Hue = readonly [string, string, string];
 
 const HUES: Record<string, Hue> = {
-  '破冰遊戲': ['#f472b6', '#9d174d', '#fce7f3'],
+  '破冰遊戲': ['#fbbf24', '#b45309', '#fef3c7'], // 黃色系
   '投影同工': ['#38bdf8', '#0369a1', '#e0f2fe'],
-  '領會伴唱': ['#fbbf24', '#b45309', '#fef3c7'],
+  '領會伴唱': ['#f472b6', '#9d174d', '#fce7f3'], // 粉紅色系
   '工具類': ['#34d399', '#047857', '#d1fae5'],
   '其他專案': ['#a78bfa', '#5b21b6', '#ede9fe'],
 };
 const DEFAULT_HUE = HUES['其他專案'];
 
-type Decoration = 'ring' | 'moon' | 'none';
+/** 26 款專屬星球 WebP 貼圖對應表 */
+const PLANET: Record<string, string> = {
+  '定時炸彈': 'bomb',
+  '誰是臥底': 'spy',
+  '今日我最美': 'beauty',
+  '2 種人': 'two-types',
+  '2 種人連線版': 'duogame',
+  '1A2B 猜數字': 'a1b2',
+  '1A2B 連線版': 'a1b2-online',
+  '你問我答': 'quiz',
+  '冷知識大挑戰': 'trivia',
+  '貪吃蛇': 'snake',
+  '多人貪吃蛇': 'snake-multi',
+  '2048': 'g2048',
+  '詩歌資料庫': 'songs',
+  '聖經投影': 'bible',
+  '詩歌投影片': 'songptt',
+  'VocalTune Studio': 'vocal',
+  'VocalTune KTV': 'ktv',
+  '語音即時翻譯': 'translate',
+  '無廣告版 YouTube': 'youtube',
+  'AI 小說轉漫畫': 'comic',
+  '小說轉影片 編輯器': 'novel-video',
+  '聖誕市集': 'christmas',
+  '桌遊租借系統': 'board-game',
+  '狗狗感人影片生成': 'paw',
+  '8 大行星模擬器': 'solar',
+  '軟體工程學習': 'learning',
+};
 
-function decorationFor(id: number): Decoration {
-  const m = id % 3;
-  return m === 0 ? 'ring' : m === 1 ? 'moon' : 'none';
-}
+/** 特殊天體外觀分類 */
+const RING = new Set(['8 大行星模擬器', '詩歌資料庫', '1A2B 連線版', '桌遊租借系統', '2048']);
+const MOON = new Set(['今日我最美', '聖經投影', '貪吃蛇', '軟體工程學習', 'AI 小說轉漫畫', '冷知識大挑戰']);
+const SAT = new Set(['語音即時翻譯', '無廣告版 YouTube', '小說轉影片 編輯器', '多人貪吃蛇']);
 
 const WARP_MS = 1150;
 const ROTATE_MS = 60000;
@@ -60,30 +87,61 @@ const CSS = `
 .cosmic-root h1, .cosmic-root h2, .cosmic-root h3, .cosmic-root .cf-heading { font-family: var(--font-heading); }
 .cosmic-root { font-family: var(--font-body); }
 
-.cf-card { transition: box-shadow .35s cubic-bezier(.2,.8,.2,1), border-color .3s, transform .28s cubic-bezier(.2,.8,.2,1); transform-style: preserve-3d; }
-.cf-card:hover { box-shadow: 0 30px 70px rgba(3,4,18,.55); border-color: rgba(199,210,254,.45); }
+.cf-card {
+  transition: box-shadow .3s cubic-bezier(.2,.8,.2,1), border-color .25s, transform .12s ease-out, background .25s cubic-bezier(.2,.8,.2,1);
+  transform-style: preserve-3d;
+  background: linear-gradient(165deg, rgba(16,22,48,0.84), rgba(8,11,30,0.8));
+  will-change: transform;
+}
+/* 滑鼠移動到的卡片：完全無模糊，透明度大於 95%，清澈見底看透背後星空背景，零 GPU 模糊卷積負擔 */
+.cf-card:hover {
+  box-shadow: 0 30px 70px rgba(3,4,18,.6), 0 0 40px rgba(129,140,248,.2);
+  border-color: rgba(199,210,254,.6);
+  background: linear-gradient(165deg, rgba(16,22,48,0.05), rgba(8,11,30,0.04)) !important;
+}
 .cf-shine { position: absolute; top: -30%; left: 0; width: 45%; height: 160%; background: linear-gradient(100deg, rgba(255,255,255,0), rgba(255,255,255,.75), rgba(255,255,255,0)); transform: translateX(-160%) skewX(-18deg); transition: transform .95s cubic-bezier(.2,.7,.2,1); pointer-events: none; }
 .cf-card:hover .cf-shine { transform: translateX(240%) skewX(-18deg); }
-.cf-band { animation: cf-spin-x 42s linear infinite paused; }
-.cf-card:hover .cf-band { animation-play-state: running; animation-duration: 7s; }
-.cf-halo { opacity: 0; transform: translate(-50%,-50%) scale(.9); transition: opacity .45s ease, transform .6s cubic-bezier(.2,.8,.2,1); }
+
+/* 星球視窗區域同步透亮，無模糊 */
+.cf-planet-viewport {
+  transition: background .25s cubic-bezier(.2,.8,.2,1);
+}
+.cf-card:hover .cf-planet-viewport {
+  background: radial-gradient(120% 120% at 82% 12%, rgba(255,255,255,0.04), transparent 58%), rgba(6,7,26,0.04) !important;
+}
+
+/* 星球貼圖自轉：平時靜止，hover 時才轉動，節省大量渲染資源 */
+.cf-orb { animation: cf-spin-x 90s linear infinite paused; will-change: background-position; }
+.cf-card:hover .cf-orb { animation-play-state: running; animation-duration: 9s; }
+
+/* 衛星與月球：平時暫停，hover 時才運轉，大幅降低全頁 26 張卡片的併發負載 */
+.cf-moon-orbit { animation: cf-moon 7s linear infinite paused; will-change: transform; }
+.cf-card:hover .cf-moon-orbit { animation-play-state: running; }
+.cf-sat-orbit { animation: cf-moon 5.5s linear infinite paused; will-change: transform; }
+.cf-card:hover .cf-sat-orbit { animation-play-state: running; }
+
+.cf-halo { opacity: 0; transform: translate(-50%,-50%) scale(.9); transition: opacity .35s ease, transform .45s cubic-bezier(.2,.8,.2,1); }
 .cf-card:hover .cf-halo { opacity: 1; transform: translate(-50%,-50%) scale(1.06); }
-.cf-sphere { transition: transform .6s cubic-bezier(.2,.8,.2,1); }
+.cf-sphere { transition: transform .4s cubic-bezier(.2,.8,.2,1); }
 .cf-card:hover .cf-sphere { transform: translate(-50%,-52%) scale(1.08); }
-.cf-glyph { transition: transform .5s cubic-bezier(.2,.8,.2,1), opacity .35s; }
+.cf-glyph { transition: transform .35s cubic-bezier(.2,.8,.2,1), opacity .3s; }
 .cf-card:hover .cf-glyph { transform: translate(-50%,-50%) scale(1.1); }
-.cf-moon { animation: cf-orbit 7s linear infinite paused; }
-.cf-card:hover .cf-moon { animation-play-state: running; }
+
 @keyframes cf-spin-x { from { background-position-x: 0%; } to { background-position-x: -200%; } }
-@keyframes cf-orbit { from { transform: translate(-50%,-50%) rotate(0deg); } to { transform: translate(-50%,-50%) rotate(360deg); } }
+@keyframes cf-moon { from { transform: translate(-50%,-50%) rotate(0deg); } to { transform: translate(-50%,-50%) rotate(360deg); } }
+@keyframes cf-disc {
+  from { transform: translate(-50%,-50%) rotate(-14deg) scaleY(.3) rotate(0deg); }
+  to { transform: translate(-50%,-50%) rotate(-14deg) scaleY(.3) rotate(360deg); }
+}
 @keyframes cf-drift { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(40px,-30px) scale(1.15); } }
 @keyframes cf-drift2 { 0%,100% { transform: translate(0,0) scale(1.1); } 50% { transform: translate(-50px,40px) scale(.9); } }
 @keyframes cf-rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
 @keyframes cf-warp-orb { 0% { transform: scale(.15); opacity: 0; } 22% { opacity: 1; } 100% { transform: scale(7.5); opacity: 1; } }
 @keyframes cf-warp-fade { 0% { opacity: 0; } 12% { opacity: 1; } 88% { opacity: 1; } 100% { opacity: 0; } }
 @keyframes cf-label { 0% { opacity: 0; transform: translateY(14px); } 30% { opacity: 1; transform: none; } 80% { opacity: 1; } 100% { opacity: 0; } }
+
 @media (prefers-reduced-motion: reduce) {
-  .cf-card, .cf-shine, .cf-band, .cf-halo, .cf-sphere, .cf-glyph, .cf-moon { transition: none !important; animation: none !important; }
+  .cf-card, .cf-shine, .cf-orb, .cf-halo, .cf-sphere, .cf-glyph { transition: none !important; animation: none !important; }
 }
 `;
 
@@ -211,29 +269,53 @@ const PlanetCard: React.FC<{
 }> = ({ project, statusLabel, useLabel, onLaunch }) => {
   const { section: secLabel } = useI18n();
   const hue = HUES[project.section] ?? DEFAULT_HUE;
-  const decoration = decorationFor(project.id);
   const cardRef = useRef<HTMLAnchorElement | null>(null);
+  const rectRef = useRef<{ left: number; top: number; width: number; height: number } | null>(null);
+  const rafRef = useRef<number | null>(null);
 
-  const onMove = (e: React.MouseEvent) => {
-    const el = cardRef.current;
-    if (!el) return;
-    const r = el.getBoundingClientRect();
-    const px = (e.clientX - r.left) / r.width;
-    const py = (e.clientY - r.top) / r.height;
-    el.style.transform = `rotateX(${(-(py - 0.5) * 8).toFixed(2)}deg) rotateY(${((px - 0.5) * 10).toFixed(2)}deg) translateZ(18px)`;
-  };
-  const onLeave = () => {
-    const el = cardRef.current;
-    if (el) el.style.transform = '';
-  };
+  const planetKey = PLANET[project.title] || 'learning';
+  const planetMapUrl = `/cosmic/planets/maps/${planetKey}.webp`;
+  const hasRing = RING.has(project.title);
+  const hasMoon = MOON.has(project.title);
+  const hasSat = SAT.has(project.title);
+  const hasHole = project.title === '誰是臥底';
 
+  const ringColor = `${hue[2]}88`;
+  const satColor = hue[2];
+  const haloColor = `${hue[0]}66`;
   const planetBg = `radial-gradient(120% 120% at 82% 12%, ${hue[1]}4d, transparent 58%), radial-gradient(90% 90% at 12% 96%, ${hue[0]}38, transparent 62%), linear-gradient(160deg, #0b1130, #06071a)`;
-  const orbBg = `radial-gradient(circle at 34% 28%, ${hue[2]}, ${hue[0]} 46%, ${hue[1]} 82%, #0b1230)`;
-  const bandOverlay = `repeating-linear-gradient(100deg, transparent 0 14px, ${hue[2]}26 14px 22px, transparent 22px 38px, ${hue[0]}1f 38px 50px)`;
   const orbGlow = `0 0 46px ${hue[0]}80, inset -14px -18px 40px rgba(4,5,20,.65)`;
   const ctaBg = `linear-gradient(120deg, ${hue[2]}, ${hue[0]})`;
   const ctaGlow = `0 10px 30px ${hue[0]}5e`;
-  const ringColor = `${hue[2]}88`;
+
+  const onEnter = () => {
+    soundManager.playHover();
+    const el = cardRef.current;
+    if (el) {
+      const r = el.getBoundingClientRect();
+      rectRef.current = { left: r.left, top: r.top, width: r.width, height: r.height };
+    }
+  };
+
+  const onMove = (e: React.MouseEvent) => {
+    const el = cardRef.current;
+    const r = rectRef.current;
+    if (!el || !r) return;
+
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    rafRef.current = requestAnimationFrame(() => {
+      const px = (e.clientX - r.left) / r.width;
+      const py = (e.clientY - r.top) / r.height;
+      el.style.transform = `rotateX(${(-(py - 0.5) * 7).toFixed(2)}deg) rotateY(${((px - 0.5) * 8.5).toFixed(2)}deg) translateZ(16px)`;
+    });
+  };
+
+  const onLeave = () => {
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    rectRef.current = null;
+    const el = cardRef.current;
+    if (el) el.style.transform = '';
+  };
 
   return (
     <div style={{ perspective: 1100 }}>
@@ -243,10 +325,10 @@ const PlanetCard: React.FC<{
         target="_blank"
         rel="noreferrer"
         onClick={(e) => onLaunch(project, e)}
-        onMouseEnter={() => soundManager.playHover()}
+        onMouseEnter={onEnter}
         onMouseMove={onMove}
         onMouseLeave={onLeave}
-        className="cf-card relative flex h-full flex-col gap-3.5 rounded-[30px] border border-white/10 bg-gradient-to-br from-[rgba(16,22,48,0.84)] to-[rgba(8,11,30,0.8)] p-5 text-inherit no-underline shadow-[0_18px_40px_rgba(3,4,18,0.5)]"
+        className="cf-card relative flex h-full flex-col gap-3.5 rounded-[30px] border border-white/10 p-5 text-inherit no-underline shadow-[0_18px_40px_rgba(3,4,18,0.5)]"
       >
         <div className="flex items-start gap-2.5">
           <div className="min-w-0 flex-1">
@@ -265,20 +347,47 @@ const PlanetCard: React.FC<{
 
         <p className="m-0 line-clamp-2 text-[13.5px] leading-relaxed text-white/65">{project.description}</p>
 
-        <div className="relative aspect-[16/11] overflow-hidden rounded-[22px] border border-white/10" style={{ background: planetBg }}>
-          {decoration === 'ring' && (
+        <div className="cf-planet-viewport relative aspect-[16/11] overflow-hidden rounded-[22px] border border-white/10" style={{ background: planetBg }}>
+          {/* 行星環 - 後半部 (被星球遮擋) */}
+          {hasRing && (
             <div
               aria-hidden
               className="pointer-events-none absolute left-1/2 top-[52%] aspect-square h-[124%] w-auto -translate-x-1/2 -translate-y-1/2 rounded-full"
-              style={{ transform: 'translate(-50%,-50%) rotate(-18deg) scaleY(.26)', border: `8px solid ${ringColor}`, boxShadow: `0 0 22px ${ringColor}`, clipPath: 'inset(0 0 50% 0)' }}
+              style={{
+                transform: 'translate(-50%,-50%) rotate(-18deg) scaleY(.26)',
+                border: `8px solid ${ringColor}`,
+                boxShadow: `0 0 22px ${ringColor}`,
+                clipPath: 'inset(0 0 50% 0)',
+              }}
             />
           )}
 
+          {/* 黑洞吸積盤光環 */}
+          {hasHole && (
+            <div
+              aria-hidden
+              className="cf-disc-acc pointer-events-none absolute left-1/2 top-[52%] aspect-square h-[130%] w-auto -translate-x-1/2 -translate-y-1/2 rounded-full"
+              style={{
+                transform: 'translate(-50%,-50%) rotate(-14deg) scaleY(.3)',
+                background: 'conic-gradient(from 0deg, rgba(255,214,160,0), rgba(255,196,120,.95), rgba(190,120,255,.75), rgba(255,214,160,0))',
+                filter: 'blur(4px)',
+              }}
+            />
+          )}
+
+          {/* 星球本體球體 (帶自轉貼圖與球面光影) */}
           <div
-            className="cf-sphere absolute left-1/2 top-[52%] aspect-square h-[64%] w-auto -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full pointer-events-none"
+            className="cf-sphere pointer-events-none absolute left-1/2 top-[52%] aspect-square h-[64%] w-auto -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full"
             style={{ boxShadow: orbGlow }}
           >
-            <div className="cf-band absolute inset-0" style={{ backgroundImage: bandOverlay, backgroundSize: '220% 100%', backgroundRepeat: 'repeat' }} />
+            <div
+              className="cf-orb absolute inset-0"
+              style={{
+                backgroundImage: `url("${planetMapUrl}")`,
+                backgroundSize: '200% 100%',
+                backgroundRepeat: 'repeat',
+              }}
+            />
             <div
               aria-hidden
               className="absolute inset-0 rounded-full"
@@ -290,29 +399,74 @@ const PlanetCard: React.FC<{
             />
           </div>
 
-          {decoration === 'ring' && (
+          {/* 行星環 - 前半部 (覆蓋在星球前) */}
+          {hasRing && (
             <div
               aria-hidden
               className="pointer-events-none absolute left-1/2 top-[52%] aspect-square h-[124%] w-auto -translate-x-1/2 -translate-y-1/2 rounded-full"
-              style={{ transform: 'translate(-50%,-50%) rotate(-18deg) scaleY(.26)', border: `8px solid ${ringColor}`, boxShadow: `0 0 22px ${ringColor}`, clipPath: 'inset(50% 0 0 0)' }}
+              style={{
+                transform: 'translate(-50%,-50%) rotate(-18deg) scaleY(.26)',
+                border: `8px solid ${ringColor}`,
+                boxShadow: `0 0 22px ${ringColor}`,
+                clipPath: 'inset(50% 0 0 0)',
+              }}
             />
           )}
 
-          {decoration === 'moon' && (
-            <div aria-hidden className="cf-moon pointer-events-none absolute left-1/2 top-[52%] aspect-square h-[84%] w-auto -translate-x-1/2 -translate-y-1/2">
+          {/* 黑洞中心奇異點核心 */}
+          {hasHole && (
+            <div
+              aria-hidden
+              className="pointer-events-none absolute left-1/2 top-[52%] aspect-square h-[46%] w-auto -translate-x-1/2 -translate-y-1/2 rounded-full"
+              style={{
+                background: '#04050f',
+                boxShadow: '0 0 40px 10px rgba(255,190,120,.45), inset 0 0 20px rgba(0,0,0,1)',
+              }}
+            />
+          )}
+
+          {/* 繞軌小月球 */}
+          {hasMoon && (
+            <div
+              aria-hidden
+              className="cf-moon-orbit pointer-events-none absolute left-1/2 top-[52%] aspect-square h-[84%] w-auto -translate-x-1/2 -translate-y-1/2"
+            >
               <div
                 className="absolute left-1/2 top-0 aspect-square w-[12%] -translate-x-1/2 -translate-y-1/2 rounded-full"
-                style={{ background: 'radial-gradient(circle at 34% 30%, #f4f6fb, #97a2b8 62%, #3c4459)', boxShadow: '0 0 14px rgba(190,205,230,.55)' }}
+                style={{
+                  background: 'radial-gradient(circle at 34% 30%, #f4f6fb, #97a2b8 62%, #3c4459)',
+                  boxShadow: '0 0 14px rgba(190,205,230,.55)',
+                }}
               />
             </div>
           )}
 
+          {/* 繞軌人造衛星 */}
+          {hasSat && (
+            <div
+              aria-hidden
+              className="cf-sat-orbit pointer-events-none absolute left-1/2 top-[52%] aspect-square h-[86%] w-auto -translate-x-1/2 -translate-y-1/2"
+              style={{ transform: 'translate(-50%,-50%) rotate(24deg)' }}
+            >
+              <svg viewBox="0 0 40 20" className="absolute left-1/2 top-0 w-[17%] -translate-x-1/2 -translate-y-1/2">
+                <g fill="none" stroke={satColor} strokeWidth="2.4" strokeLinecap="round">
+                  <rect x="16" y="6" width="8" height="8" rx="2" fill={satColor} fillOpacity=".5" />
+                  <path d="M16 10H4M24 10h12" />
+                  <rect x="1" y="5" width="6" height="10" rx="1.5" fill={satColor} fillOpacity=".35" />
+                  <rect x="33" y="5" width="6" height="10" rx="1.5" fill={satColor} fillOpacity=".35" />
+                </g>
+              </svg>
+            </div>
+          )}
+
+          {/* 外圍 Halo 光暈 */}
           <div
             aria-hidden
             className="cf-halo pointer-events-none absolute left-1/2 top-[52%] aspect-square h-[96%] w-auto -translate-x-1/2 -translate-y-1/2 rounded-full"
-            style={{ background: `radial-gradient(circle, transparent 53%, ${hue[0]}66 61%, transparent 73%)` }}
+            style={{ background: `radial-gradient(circle, transparent 53%, ${haloColor} 61%, transparent 73%)` }}
           />
 
+          {/* 中央 SVG 呼吸圖示 */}
           <div className="cf-glyph pointer-events-none absolute left-1/2 top-[52%] aspect-square h-1/2 w-auto -translate-x-1/2 -translate-y-1/2 opacity-95">
             <ServiceIcon
               name={project.title}
@@ -322,6 +476,7 @@ const PlanetCard: React.FC<{
             />
           </div>
 
+          {/* 亮點標籤 */}
           <div className="absolute inset-x-3 bottom-3 flex flex-wrap gap-1.5">
             {project.highlights.slice(0, 2).map((h) => (
               <span
@@ -467,16 +622,16 @@ const CosmicStudioPage: React.FC = () => {
       />
       <div aria-hidden className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
         <div
-          className="absolute -left-[6vw] -top-[14vh] h-[62vw] w-[62vw] rounded-full blur-[40px]"
-          style={{ background: 'radial-gradient(circle, rgba(129,140,248,.42), rgba(129,140,248,0) 66%)', animation: 'cf-drift 34s ease-in-out infinite' }}
+          className="absolute -left-[6vw] -top-[14vh] h-[62vw] w-[62vw] rounded-full"
+          style={{ background: 'radial-gradient(circle, rgba(129,140,248,.32) 0%, rgba(129,140,248,.10) 36%, transparent 70%)', animation: 'cf-drift 34s ease-in-out infinite', willChange: 'transform' }}
         />
         <div
-          className="absolute -right-[10vw] -bottom-[22vh] h-[70vw] w-[70vw] rounded-full blur-[50px]"
-          style={{ background: 'radial-gradient(circle, rgba(192,132,252,.32), rgba(192,132,252,0) 68%)', animation: 'cf-drift2 44s ease-in-out infinite' }}
+          className="absolute -right-[10vw] -bottom-[22vh] h-[70vw] w-[70vw] rounded-full"
+          style={{ background: 'radial-gradient(circle, rgba(192,132,252,.25) 0%, rgba(192,132,252,.08) 38%, transparent 70%)', animation: 'cf-drift2 44s ease-in-out infinite', willChange: 'transform' }}
         />
         <div
-          className="absolute right-[18vw] top-[26vh] h-[34vw] w-[34vw] rounded-full blur-[46px]"
-          style={{ background: 'radial-gradient(circle, rgba(56,189,248,.26), rgba(56,189,248,0) 70%)', animation: 'cf-drift 28s ease-in-out infinite' }}
+          className="absolute right-[18vw] top-[26vh] h-[34vw] w-[34vw] rounded-full"
+          style={{ background: 'radial-gradient(circle, rgba(56,189,248,.22) 0%, rgba(56,189,248,.06) 38%, transparent 70%)', animation: 'cf-drift 28s ease-in-out infinite', willChange: 'transform' }}
         />
       </div>
       <canvas ref={canvasRef} aria-hidden className="pointer-events-none fixed inset-0 z-[1] h-screen w-screen" />
@@ -525,7 +680,7 @@ const CosmicStudioPage: React.FC = () => {
           </p>
         </section>
 
-        <div className="sticky top-0 z-[6] border-b border-white/[0.07] bg-[rgba(8,10,32,.72)] px-4 py-3 backdrop-blur-xl md:px-14">
+        <div className="sticky top-0 z-[6] border-b border-white/[0.07] bg-[rgba(8,10,32,.92)] px-4 py-3 md:px-14">
           <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-2.5">
             <div className="relative min-w-[200px] max-w-[380px] flex-1">
               <span aria-hidden className="pointer-events-none absolute left-[18px] top-1/2 -translate-y-1/2">
@@ -627,10 +782,12 @@ const CosmicStudioPage: React.FC = () => {
         >
           <div
             aria-hidden
-            className="absolute h-[44vmin] w-[44vmin] rounded-full"
+            className="absolute h-[44vmin] w-[44vmin]"
             style={{
-              background: `radial-gradient(circle at 34% 28%, ${launchHue[2]}, ${launchHue[0]} 46%, ${launchHue[1]} 82%, #0b1230)`,
-              boxShadow: `0 0 120px ${launchHue[0]}`,
+              backgroundImage: `url("/cosmic/planets/${PLANET[launch.title] || 'learning'}.webp")`,
+              backgroundSize: 'contain',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
               filter: 'drop-shadow(0 0 60px rgba(120,180,255,.5))',
               animation: `cf-warp-orb ${WARP_MS}ms cubic-bezier(.5,0,.85,.4) both`,
             }}
