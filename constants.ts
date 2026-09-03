@@ -628,6 +628,18 @@ export const PUBLIC_PROJECTS: Project[] = [
     repoName: "novel-to-video-editor",
     featured: true,
   },
+  {
+    id: 215,
+    title: "軟體工程學習",
+    category: "工程學習工具",
+    section: "其他專案",
+    status: "Live",
+    description: "互動式軟體工程學習平台，涵蓋系統設計與 Python 演算法路線；每章都有圖解、互動教材、小測驗與 80 分通過考試。",
+    highlights: ["系統設計面試準備", "Python 演算法題", "章節考試與學習進度"],
+    tech: ["HTML", "CSS", "JavaScript", "LocalStorage", "Docker"],
+    url: "https://games.ricky-nova.com/software-learning/",
+    repoName: "HTML Games",
+  },
 ];
 
 export const PROJECTS: Project[] = [...CAREER_PROJECTS, ...PUBLIC_PROJECTS];
@@ -823,6 +835,7 @@ const EN_PROJECT_OVERRIDES: Record<number, ProjectI18n> = {
   212: { title: "AI Novel-to-Manga", category: "AI Creative Tool", description: "An AI workbench that turns novels into manga storyboards: import a novel, manage characters / style / costumes / scenes / panels, and export prompts ready for image-gen AI or NotebookLM (Markdown / DOCX).", highlights: ["Novel to manga storyboard", "Character / style / scene manager", "One-click prompt export"] },
   213: { title: "Christmas Market Admin", category: "Event Operations System", description: "The organizer-side admin backend for the Christmas Market payment platform — manages customer top-ups, vendor POS and transaction reports.", highlights: ["Customer top-up management", "Vendor POS overview", "Real-time transaction reports"] },
   214: { title: "Novel To Video Editor", category: "AI Video Editing", description: "A browser-based multi-track video editor with timeline editing, media management, live preview and export — everything runs locally in the browser, nothing is uploaded. Forked from the open-source OpenCut project, with an added Traditional Chinese interface toggle.", highlights: ["Browser-based multi-track editing", "100% local processing", "Traditional Chinese UI"] },
+  215: { title: "Software Engineering Learning", category: "Engineering Learning Tool", description: "An interactive software-engineering learning platform covering system design and Python algorithms, with visual lessons, interactive exercises, quizzes and chapter exams requiring 80 points to pass.", highlights: ["System-design interview prep", "Python algorithm questions", "Chapter exams & progress tracking"] },
 };
 
 function localizeProjects(list: Project[], lang: 'zh' | 'en'): Project[] {
