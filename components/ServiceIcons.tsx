@@ -807,23 +807,23 @@ const PROJECT_ICONS: Record<string, React.ReactNode> = {
 /* 對外元件                                                             */
 /* ------------------------------------------------------------------ */
 
-const Svg: React.FC<{ children: React.ReactNode; className?: string; title?: string }> = ({ children, className, title }) => (
-  <svg viewBox="0 0 48 48" className={`svc ${className ?? 'h-9 w-9'}`} role="img" aria-label={title} focusable="false">
+const Svg: React.FC<{ children: React.ReactNode; className?: string; title?: string; style?: React.CSSProperties }> = ({ children, className, title, style }) => (
+  <svg viewBox="0 0 48 48" className={`svc ${className ?? 'h-9 w-9'}`} style={style} role="img" aria-label={title} focusable="false">
     {title ? <title>{title}</title> : null}
     {children}
   </svg>
 );
 
 /** 服務卡片圖示：找不到專屬圖示時退回該分類圖示 */
-export const ServiceIcon: React.FC<{ name: string; section?: string; className?: string }> = ({ name, section, className }) => {
+export const ServiceIcon: React.FC<{ name: string; section?: string; className?: string; style?: React.CSSProperties }> = ({ name, section, className, style }) => {
   const icon =
     PROJECT_ICONS[name] ?? (section ? SECTION_ICONS[section] : undefined) ?? SECTION_ICONS['其他專案'];
-  return <Svg className={className} title={name}>{icon}</Svg>;
+  return <Svg className={className} style={style} title={name}>{icon}</Svg>;
 };
 
 /** 分類入口圖示 */
-export const SectionIcon: React.FC<{ name: string; className?: string }> = ({ name, className }) => (
-  <Svg className={className} title={name}>{SECTION_ICONS[name] ?? SECTION_ICONS['其他專案']}</Svg>
+export const SectionIcon: React.FC<{ name: string; className?: string; style?: React.CSSProperties }> = ({ name, className, style }) => (
+  <Svg className={className} style={style} title={name}>{SECTION_ICONS[name] ?? SECTION_ICONS['其他專案']}</Svg>
 );
 
 /** 站頭 Logo 用的工具箱圖示 */
