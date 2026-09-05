@@ -589,12 +589,10 @@ const CosmicStudioPage: React.FC = () => {
   const launchHue = launch ? HUES[launch.section] ?? DEFAULT_HUE : DEFAULT_HUE;
 
   const onLaunch = (project: Project, e: React.MouseEvent) => {
-    e.preventDefault();
     if (launch) return;
     warpRef.current = 1;
     setLaunch(project);
     window.setTimeout(() => {
-      window.open(project.url, '_blank', 'noopener');
       warpRef.current = 0;
       setLaunch(null);
     }, WARP_MS);
