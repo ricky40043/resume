@@ -78,6 +78,12 @@ const SAT = new Set(['語音即時翻譯', '無廣告版 YouTube', '小說轉影
 const WARP_MS = 1150;
 const ROTATE_MS = 60000;
 
+function isStandaloneApp() {
+  const iosStandalone = (navigator as Navigator & { standalone?: boolean }).standalone === true;
+  const displayModeStandalone = window.matchMedia('(display-mode: standalone)').matches;
+  return iosStandalone || displayModeStandalone;
+}
+
 /* ------------------------------------------------------------------ */
 /* 樣式                                                                 */
 /* ------------------------------------------------------------------ */
@@ -590,6 +596,14 @@ const CosmicStudioPage: React.FC = () => {
 
   const onLaunch = (project: Project, e: React.MouseEvent) => {
     if (launch) return;
+
+    // PWA/手機桌面模式不一定能建立新分頁，直接在目前視窗跳轉最可靠。
+    if (isStandaloneApp()) {
+      e.preventDefault();
+      window.location.assign(project.url);
+      return;
+    }
+
     warpRef.current = 1;
     setLaunch(project);
     window.setTimeout(() => {
