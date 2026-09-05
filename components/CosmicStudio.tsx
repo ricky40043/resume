@@ -84,6 +84,10 @@ function isStandaloneApp() {
   return iosStandalone || displayModeStandalone;
 }
 
+function isMobileLayout() {
+  return window.matchMedia('(max-width: 767px)').matches;
+}
+
 /* ------------------------------------------------------------------ */
 /* 樣式                                                                 */
 /* ------------------------------------------------------------------ */
@@ -597,10 +601,15 @@ const CosmicStudioPage: React.FC = () => {
   const onLaunch = (project: Project, e: React.MouseEvent) => {
     if (launch) return;
 
-    // PWA/手機桌面模式不一定能建立新分頁，直接在目前視窗跳轉最可靠。
-    if (isStandaloneApp()) {
+    // 手機版先完整播放曲速特效，再在目前視窗跳轉，避免依賴可能被攔截的外開視窗。
+    if (isStandaloneApp() || isMobileLayout()) {
       e.preventDefault();
-      window.location.assign(project.url);
+      warpRef.current = 1;
+      setLaunch(project);
+      window.setTimeout(() => {
+        warpRef.current = 0;
+        window.location.assign(project.url);
+      }, WARP_MS);
       return;
     }
 
