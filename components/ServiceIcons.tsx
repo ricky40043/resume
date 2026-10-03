@@ -526,6 +526,29 @@ const PROJECT_ICONS: Record<string, React.ReactNode> = {
     </g>
   ),
 
+  /** Bingo 找到彼此：九宮格連成一線，玩家節點同時亮起 */
+  'Bingo 找到彼此': (
+    <g {...stroke}>
+      <rect x="5" y="5" width="38" height="38" rx="8" fill="currentColor" fillOpacity={0.18} strokeWidth={2.8} />
+      {[12, 24, 36].flatMap((y, row) =>
+        [12, 24, 36].map((x, col) => (
+          <circle
+            key={`${row}-${col}`}
+            className={row === 1 ? `sv-pop sv-${['a', 'b', 'c'][col]}` : undefined}
+            cx={x}
+            cy={y}
+            r={4.2}
+            fill="currentColor"
+            fillOpacity={row === 1 ? 0.82 : 0.28}
+            strokeWidth={2.2}
+          />
+        )),
+      )}
+      <path className="sv-flow" d="M9 24 H39" strokeWidth={3.4} strokeDasharray="5 4" />
+      <Spark x={40} y={8} r={4} className="sv-twinkle sv-d" />
+    </g>
+  ),
+
   /* ---------- 投影同工 ---------- */
 
   /** 詩歌資料庫：資料庫圓柱 + 音符 → hover 音符飄出、資料層堆疊 */

@@ -49,6 +49,7 @@ const PLANET: Record<string, string> = {
   '2 種人連線版': 'duogame',
   '1A2B 猜數字': 'a1b2',
   '1A2B 連線版': 'a1b2-online',
+  'Bingo 找到彼此': 'duogame',
   '你問我答': 'quiz',
   '冷知識大挑戰': 'trivia',
   '貪吃蛇': 'snake',
@@ -71,7 +72,7 @@ const PLANET: Record<string, string> = {
 };
 
 /** 特殊天體外觀分類 */
-const RING = new Set(['8 大行星模擬器', '詩歌資料庫', '1A2B 連線版', '桌遊租借系統', '2048']);
+const RING = new Set(['8 大行星模擬器', '詩歌資料庫', '1A2B 連線版', 'Bingo 找到彼此', '桌遊租借系統', '2048']);
 const MOON = new Set(['今日我最美', '聖經投影', '貪吃蛇', '軟體工程學習', 'AI 小說轉漫畫', '冷知識大挑戰']);
 const SAT = new Set(['語音即時翻譯', '無廣告版 YouTube', '小說轉影片 編輯器', '多人貪吃蛇']);
 

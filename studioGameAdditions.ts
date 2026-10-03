@@ -50,6 +50,19 @@ const studioGameAdditions: Project[] = [
     url: "https://guess-who.ricky-nova.com",
     repoName: "guess-who-game",
   },
+  {
+    id: 117,
+    title: "Bingo 找到彼此",
+    category: "多人交流遊戲",
+    section: "破冰遊戲",
+    status: "Live",
+    description: "掃 QR Code 即可加入的即時多人 Bingo。可讓玩家互相尋找符合題目的朋友並手寫簽名，也能分組自填九宮格、由主持人公布答案競賽，適合營會、小組與大型聚會。",
+    highlights: ["QR Code 快速加入與即時同步", "互相簽名／分組猜答案雙模式", "主持人主板、連線判定與得獎排行"],
+    tech: ["Vue 3", "TypeScript", "Go", "WebSocket", "Docker", "Cloudflare Tunnel"],
+    url: "https://bingo.ricky-nova.com",
+    repoName: "bingo",
+    featured: true,
+  },
 ];
 
 const existingIds = new Set(PUBLIC_PROJECTS.map((project) => project.id));
