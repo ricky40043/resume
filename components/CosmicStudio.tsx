@@ -576,6 +576,29 @@ const CosmicStudioPage: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // 處理瀏覽器「上一頁 / 往返快取 (bfcache)」恢復或分頁重新顯示時，重置曲速轉場狀態，確保卡片不會被鎖定
+  useEffect(() => {
+    const handleRestore = () => {
+      warpRef.current = 0;
+      setLaunch(null);
+    };
+
+    window.addEventListener('pageshow', handleRestore);
+    window.addEventListener('popstate', handleRestore);
+    const onVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        handleRestore();
+      }
+    };
+    document.addEventListener('visibilitychange', onVisibilityChange);
+
+    return () => {
+      window.removeEventListener('pageshow', handleRestore);
+      window.removeEventListener('popstate', handleRestore);
+      document.removeEventListener('visibilitychange', onVisibilityChange);
+    };
+  }, []);
+
   const statusLabels: Record<Project['status'], string> = {
     Live: t.card.statusLive,
     Demo: t.card.statusDemo,
@@ -599,25 +622,26 @@ const CosmicStudioPage: React.FC = () => {
   const launchHue = launch ? HUES[launch.section] ?? DEFAULT_HUE : DEFAULT_HUE;
 
   const onLaunch = (project: Project, e: React.MouseEvent) => {
-    if (launch) return;
-
-    // 手機版先完整播放曲速特效，再在目前視窗跳轉，避免依賴可能被攔截的外開視窗。
-    if (isStandaloneApp() || isMobileLayout()) {
-      e.preventDefault();
-      warpRef.current = 1;
-      setLaunch(project);
-      window.setTimeout(() => {
-        warpRef.current = 0;
-        window.location.assign(project.url);
-      }, WARP_MS);
+    // 支援以輔助鍵（Ctrl / Cmd / Shift / Alt）或滑鼠中鍵開啟新分頁，不予攔截
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) {
       return;
     }
 
+    if (launch) return;
+    e.preventDefault();
+
+    soundManager.playHover();
     warpRef.current = 1;
     setLaunch(project);
+
+    // 電腦版與手機版皆完整播放曲速飛越特效，結束後跳轉至目標專案
     window.setTimeout(() => {
       warpRef.current = 0;
-      setLaunch(null);
+      window.location.assign(project.url);
+      // 防呆：跳轉呼叫後排程重置，確保任何情況（如取消跳轉或自 bfcache 恢復時）均不阻礙後續點擊
+      window.setTimeout(() => {
+        setLaunch(null);
+      }, 150);
     }, WARP_MS);
   };
 
