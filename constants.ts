@@ -640,18 +640,6 @@ export const PUBLIC_PROJECTS: Project[] = [
     url: "https://games.ricky-nova.com/software-learning/",
     repoName: "HTML Games",
   },
-  {
-    id: 216,
-    title: "你畫我猜",
-    category: "多人派對遊戲",
-    section: "其他專案",
-    status: "Live",
-    description: "即時多人你畫我猜遊戲，Go + WebSocket 單一容器提供前端、API 與畫布同步；支援個人賽與分組賽，手機掃 QR Code 加入，189 題內建題庫。",
-    highlights: ["即時畫布同步", "個人賽 / 分組賽", "QR Code 手機加入"],
-    tech: ["Go", "Gin", "Gorilla WebSocket", "Vue 3", "TypeScript", "Vite", "Pinia"],
-    url: "https://draw-guess.ricky-nova.com",
-    repoName: "draw-guess-gam",
-  },
 ];
 
 export const PROJECTS: Project[] = [...CAREER_PROJECTS, ...PUBLIC_PROJECTS];
@@ -848,7 +836,6 @@ const EN_PROJECT_OVERRIDES: Record<number, ProjectI18n> = {
   213: { title: "Christmas Market Admin", category: "Event Operations System", description: "The organizer-side admin backend for the Christmas Market payment platform — manages customer top-ups, vendor POS and transaction reports.", highlights: ["Customer top-up management", "Vendor POS overview", "Real-time transaction reports"] },
   214: { title: "Novel To Video Editor", category: "AI Video Editing", description: "A browser-based multi-track video editor with timeline editing, media management, live preview and export — everything runs locally in the browser, nothing is uploaded. Forked from the open-source OpenCut project, with an added Traditional Chinese interface toggle.", highlights: ["Browser-based multi-track editing", "100% local processing", "Traditional Chinese UI"] },
   215: { title: "Software Engineering Learning", category: "Engineering Learning Tool", description: "An interactive software-engineering learning platform covering system design and Python algorithms, with visual lessons, interactive exercises, quizzes and chapter exams requiring 80 points to pass.", highlights: ["System-design interview prep", "Python algorithm questions", "Chapter exams & progress tracking"] },
-  216: { title: "Draw & Guess", category: "Multiplayer Party Game", description: "A real-time multiplayer drawing-and-guessing game — a single Go + WebSocket container serves the frontend, API and live canvas sync; supports solo and team modes, QR-code join from mobile, with a built-in 189-prompt library.", highlights: ["Real-time canvas sync", "Solo / team modes", "QR-code mobile join"] },
 };
 
 function localizeProjects(list: Project[], lang: 'zh' | 'en'): Project[] {

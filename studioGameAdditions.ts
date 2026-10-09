@@ -63,6 +63,18 @@ const studioGameAdditions: Project[] = [
     repoName: "bingo",
     featured: true,
   },
+  {
+    id: 118,
+    title: "你畫我猜",
+    category: "多人繪畫猜謎遊戲",
+    section: "破冰遊戲",
+    status: "Live",
+    description: "即時多人你畫我猜派對遊戲。手機掃 QR Code 加入，輪流當描述者用口頭形容讓大家照著畫，支援個人賽與 2～8 組分組賽，內建 189 題題庫，白板與所有玩家即時同步看到彼此的畫作。",
+    highlights: ["即時畫布同步", "個人賽／分組賽雙模式", "QR Code 手機加入"],
+    tech: ["Go", "Gin", "Gorilla WebSocket", "Vue 3", "TypeScript", "Vite", "Pinia"],
+    url: "https://draw-guess.ricky-nova.com",
+    repoName: "draw-guess-gam",
+  },
 ];
 
 const existingIds = new Set(PUBLIC_PROJECTS.map((project) => project.id));
