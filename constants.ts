@@ -639,6 +639,18 @@ export const PUBLIC_PROJECTS: Project[] = [
     tech: ["HTML", "CSS", "JavaScript", "LocalStorage", "Docker"],
     url: "https://games.ricky-nova.com/software-learning/",
     repoName: "HTML Games",
+  },  {
+    id: 216,
+    title: "雙向翻譯機",
+    category: "AI 語音翻譯",
+    section: "工具類",
+    status: "Live",
+    description: "一支手機放在兩人中間，按一次就能自然對話：自動偵測誰在說話、講完自動翻成對方的語言，支援每邊多種語言與中英夾雜。網路慢時自動壓縮音訊，也能切換成本機語音辨識與翻譯模型離線使用。",
+    highlights: ["面對面雙向即時翻譯", "每邊多語言、中英夾雜自動分句", "雲端／本機模型切換"],
+    tech: ["Vue", "FastAPI", "Groq Whisper", "whisper.cpp", "Ollama", "Docker"],
+    url: "https://translator.ricky-nova.com",
+    repoName: "polyglot-chat",
+    featured: true,
   },
 ];
 
@@ -836,6 +848,7 @@ const EN_PROJECT_OVERRIDES: Record<number, ProjectI18n> = {
   213: { title: "Christmas Market Admin", category: "Event Operations System", description: "The organizer-side admin backend for the Christmas Market payment platform — manages customer top-ups, vendor POS and transaction reports.", highlights: ["Customer top-up management", "Vendor POS overview", "Real-time transaction reports"] },
   214: { title: "Novel To Video Editor", category: "AI Video Editing", description: "A browser-based multi-track video editor with timeline editing, media management, live preview and export — everything runs locally in the browser, nothing is uploaded. Forked from the open-source OpenCut project, with an added Traditional Chinese interface toggle.", highlights: ["Browser-based multi-track editing", "100% local processing", "Traditional Chinese UI"] },
   215: { title: "Software Engineering Learning", category: "Engineering Learning Tool", description: "An interactive software-engineering learning platform covering system design and Python algorithms, with visual lessons, interactive exercises, quizzes and chapter exams requiring 80 points to pass.", highlights: ["System-design interview prep", "Python algorithm questions", "Chapter exams & progress tracking"] },
+  216: { title: "Two-way Translator", category: "AI Voice Translation", description: "Put one phone between two people and just talk: it detects who is speaking and translates into the other person's language when they finish, with multiple languages per side and mixed-language speech. Audio is compressed automatically on slow networks, and it can switch to on-device speech recognition and translation models for offline use.", highlights: ["Face-to-face two-way translation", "Multi-language sides, mixed speech split", "Cloud / local model switch"] },
 };
 
 function localizeProjects(list: Project[], lang: 'zh' | 'en'): Project[] {
