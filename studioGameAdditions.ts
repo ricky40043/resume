@@ -97,7 +97,7 @@ const studioGameAdditions: Project[] = [
     description: "聖誕版定時炸彈。抽出聖誕題目（例如「聖誕樹上的裝飾品」），大家對著麥克風喊出相關的詞，系統即時辨識並計數，在禮物爆炸前說滿就過關，來不及就 BOOM！",
     highlights: ["聖誕主題題庫", "語音辨識即時計算詞數", "人數越多要說越多詞"],
     tech: ["HTML", "JavaScript", "Web Speech API", "Web Audio API"],
-    url: "https://christmas-gift-bomb.ricky-nova.com/",
+    url: "https://games.ricky-nova.com/christmas-gift-bomb/",
     repoName: "HTML Game",
     featured: true,
   },
