@@ -61,6 +61,7 @@ const SECTION_LABELS: Record<string, { zh: string; en: string }> = {
   "迅智網路": { zh: "迅智網路", en: "迅智網路" },
   "光欣科技": { zh: "光欣科技", en: "光欣科技" },
   "公開作品": { zh: "公開作品", en: "Public Works" },
+  "聖誕節遊戲": { zh: "聖誕節遊戲", en: "Christmas Games" },
   "破冰遊戲": { zh: "破冰遊戲", en: "Icebreaker Games" },
   "投影同工": { zh: "投影同工", en: "Worship Projection" },
   "領會伴唱": { zh: "領會伴唱", en: "Worship & Vocals" },

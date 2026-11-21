@@ -32,6 +32,7 @@ const BG_PHOTOS: { file: string; thumb: string; name: { zh: string; en: string }
 type Hue = readonly [string, string, string];
 
 const HUES: Record<string, Hue> = {
+  '聖誕節遊戲': ['#f87171', '#991b1b', '#fee2e2'], // 聖誕紅
   '破冰遊戲': ['#fbbf24', '#b45309', '#fef3c7'], // 黃色系
   '投影同工': ['#38bdf8', '#0369a1', '#e0f2fe'],
   '領會伴唱': ['#f472b6', '#9d174d', '#fce7f3'], // 粉紅色系
@@ -43,6 +44,9 @@ const DEFAULT_HUE = HUES['其他專案'];
 /** 26 款專屬星球 WebP 貼圖對應表 */
 const PLANET: Record<string, string> = {
   '定時炸彈': 'bomb',
+  'ㄅㄆㄇ 聖誕限時挑戰': 'christmas',
+  '聖誕禮物爆炸': 'christmas',
+  '節奏接龍・聖誕版': 'christmas',
   '誰是臥底': 'spy',
   '今日我最美': 'beauty',
   '2 種人': 'two-types',

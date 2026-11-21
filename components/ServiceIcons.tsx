@@ -173,8 +173,22 @@ const Head: React.FC<{ x: number; y: number; r?: number; className?: string; sty
 );
 
 /* ------------------------------------------------------------------ */
-/* 分類圖示（5）                                                        */
+/* 分類圖示（6）                                                        */
 /* ------------------------------------------------------------------ */
+
+/** 聖誕節遊戲：聖誕樹 → hover 樹頂星星閃爍、彩球亮起 */
+const IcoXmasTree = (
+  <g {...stroke}>
+    <path d="M24 9 L35 23 H29 L38 35 H10 L19 23 H13 Z" fill="currentColor" fillOpacity={0.28} strokeWidth={2.8} />
+    <path d="M21 35 v6 h6 v-6" strokeWidth={2.6} />
+    <Spark x={24} y={7} r={5} className="sv-twinkle" />
+    <g fill="currentColor" stroke="none">
+      <circle className="sv-pop sv-a" cx="21" cy="21" r="2.4" />
+      <circle className="sv-pop sv-b" cx="28" cy="29" r="2.4" />
+      <circle className="sv-pop sv-c" cx="18" cy="31" r="2.4" />
+    </g>
+  </g>
+);
 
 /** 破冰遊戲：骰子 → hover 擲骰翻面 */
 const IcoDice = (
@@ -251,6 +265,7 @@ const IcoSparkle = (
 );
 
 const SECTION_ICONS: Record<string, React.ReactNode> = {
+  '聖誕節遊戲': IcoXmasTree,
   '破冰遊戲': IcoDice,
   '投影同工': IcoProjector,
   '領會伴唱': IcoMic,
@@ -259,10 +274,58 @@ const SECTION_ICONS: Record<string, React.ReactNode> = {
 };
 
 /* ------------------------------------------------------------------ */
-/* 服務圖示（30）                                                       */
+/* 服務圖示（33）                                                       */
 /* ------------------------------------------------------------------ */
 
 const PROJECT_ICONS: Record<string, React.ReactNode> = {
+  /* ---------- 聖誕節遊戲 ---------- */
+
+  /** 注音聖誕限時挑戰：ㄅㄆ 字磚＋倒數碼錶 → hover 字磚跳動、指針轉動 */
+  'ㄅㄆㄇ 聖誕限時挑戰': (
+    <g {...stroke}>
+      <g strokeWidth={2.6}>
+        <rect className="sv-move" style={mv(0, -4, -8)} x="3" y="20" width="14" height="18" rx="4.5" fill="currentColor" fillOpacity={0.3} />
+        <rect className="sv-move sv-b" style={mv(0, 4, 6)} x="18" y="20" width="14" height="18" rx="4.5" fill="currentColor" fillOpacity={0.44} />
+      </g>
+      <Label x={10} y={29} size={11} className="sv-move" style={mv(0, -4, -8)}>ㄅ</Label>
+      <Label x={25} y={29} size={11} className="sv-move sv-b" style={mv(0, 4, 6)}>ㄆ</Label>
+      <circle cx="39" cy="15" r="8" fill="currentColor" fillOpacity={0.22} strokeWidth={2.6} />
+      <path d="M37 5 h4" strokeWidth={2.4} />
+      <path className="sv-tick" style={{ transformOrigin: '39px 15px' }} d="M39 15 L39 10" strokeWidth={2.6} />
+      <Spark x={42} y={36} r={4} className="sv-twinkle sv-c" />
+    </g>
+  ),
+
+  /** 聖誕禮物爆炸：禮物盒 → hover 盒蓋彈開、兩側迸出星光 */
+  '聖誕禮物爆炸': (
+    <g {...stroke}>
+      <Spark x={8} y={8} r={4.5} className="sv-pop sv-b" />
+      <Spark x={41} y={7} r={5} className="sv-pop sv-c" />
+      <rect x="9" y="22" width="30" height="20" rx="3" fill="currentColor" fillOpacity={0.3} strokeWidth={2.8} />
+      <path d="M24 22 v20" strokeWidth={2.6} />
+      <g className="sv-move" style={mv(0, -6, -10)}>
+        <rect x="6" y="15" width="36" height="7" rx="2.5" fill="currentColor" fillOpacity={0.42} strokeWidth={2.8} />
+        <path d="M24 15 C 18 6, 12 12, 24 15 C 36 12, 30 6, 24 15" strokeWidth={2.6} />
+      </g>
+    </g>
+  ),
+
+  /** 節奏接龍聖誕版：搖擺的鈴鐺＋節奏條 → hover 鈴鐺擺動、音符彈出 */
+  '節奏接龍・聖誕版': (
+    <g {...stroke}>
+      <g className="sv-tick" style={{ transformOrigin: '20px 8px' }}>
+        <path d="M20 8 C 11 8, 10 18, 10 26 L6 33 H34 L30 26 C 30 18, 29 8, 20 8 Z" fill="currentColor" fillOpacity={0.3} strokeWidth={2.8} />
+        <circle cx="20" cy="37" r="3" fill="currentColor" stroke="none" />
+      </g>
+      <path d="M20 4 v4" strokeWidth={2.6} />
+      <g className="sv-pop sv-b" strokeWidth={2.6} opacity={0.85}>
+        <path className="sv-bar" d="M38 36 v-8" />
+        <path className="sv-bar sv-c" d="M43 36 v-14" />
+      </g>
+      <Spark x={40} y={11} r={4} className="sv-twinkle sv-d" />
+    </g>
+  ),
+
   /* ---------- 破冰遊戲 ---------- */
 
   /** 定時炸彈：引信冒火花 → hover 整顆炸開 */

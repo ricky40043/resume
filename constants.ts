@@ -39,7 +39,7 @@ export const NAV_ITEMS = [
 
 export const RESUME_SECTIONS = ["全部", "職涯實戰", "三傑物聯", "天茶智能", "迅智網路", "光欣科技", "公開作品"];
 
-export const PUBLIC_SECTIONS = ["全部", "破冰遊戲", "投影同工", "領會伴唱", "工具類", "其他專案"];
+export const PUBLIC_SECTIONS = ["全部", "聖誕節遊戲", "破冰遊戲", "投影同工", "領會伴唱", "工具類", "其他專案"];
 
 export const SKILLS_CATEGORIES = [
   {
