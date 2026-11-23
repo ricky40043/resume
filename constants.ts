@@ -305,6 +305,18 @@ export const CAREER_PROJECTS: Project[] = [
 
 export const PUBLIC_PROJECTS: Project[] = [
   {
+    id: 119,
+    title: "限時記憶大挑戰",
+    category: "限時觀察遊戲",
+    section: "破冰遊戲",
+    status: "Live",
+    description: "看圖 10 秒，翻面後憑記憶回答。從 100 張寫實與卡通場景抽題，考驗你有沒有記住畫面裡的時間、文字、數字與細節。支援 1～12 位玩家或隊伍，由主持人計分和揭曉冠軍。",
+    highlights: ["10 秒看圖與翻牌", "100 張圖片、500 道觀察題", "1～12 位玩家或隊伍"],
+    tech: ["HTML", "CSS", "JavaScript", "Web Audio API"],
+    url: "https://games.ricky-nova.com/memory-challenge/index.html",
+    repoName: "HTML Game",
+  },
+  {
     id: 101,
     title: "定時炸彈",
     category: "聚會互動",
@@ -833,6 +845,7 @@ const EN_PROJECT_OVERRIDES: Record<number, ProjectI18n> = {
   110: { title: "Today I'm the Prettiest", category: "Multiplayer Online", description: "A scan-and-play photo party game — prompts appear on your phone, snap and submit, and the big screen live-projects a wall of winning photos for the whole gathering.", highlights: ["QR-code quick join", "Live photo wall", "Solo & group modes"] },
   111: { title: "Trivia Challenge", category: "Single-player Game", description: "A single-player trivia challenge with 1,000 questions, plus a group icebreaker mode — test everyone's general knowledge at a gathering.", highlights: ["1,000-question bank", "Group icebreaker mode", "Mobile friendly"] },
   112: { title: "1A2B Online", category: "Multiplayer Online", description: "A real-time multiplayer 1A2B deduction arena — opponents are matched in a ring, answers are timed, and a live feed shows everyone's progress.", highlights: ["Multiplayer online", "Ring-matched opponents", "Live status feed"] },
+  119: { title: "10-Second Memory Challenge", category: "Timed Observation Game", description: "Study a scene for 10 seconds, then answer from memory. Spot times, words, numbers, and other details in 100 photo-style and cartoon scenes. A host scores answers and reveals the winners for 1–12 players or teams.", highlights: ["10-second timer and card flip", "100 scenes and 500 questions", "1–12 players or teams"] },
   201: { title: "Hymn Database", category: "Church Projection Tool", description: "A hymn database with search API, crawler import and PPTX generation — lyric normalization, hash dedup and a fixed SQLite seed for deployment.", highlights: ["16,000+ hymns", "Search & PPTX API", "Self-hosted Docker"] },
   202: { title: "Hymn Slides", category: "Church Projection Tool", description: "A hymn-slide tool for projection volunteers; paired with the hymn database it forms a workflow from finding songs to generating slides.", highlights: ["Hymn projection flow", "Fast slide generation", "Built for live ministry"] },
   203: { title: "Bible Projection", category: "Church Projection Tool", description: "A Bible projection and auto-PPT system — host/projection sync, QR-code join, multiple Bible versions and service-slide formats.", highlights: ["Real-time WebSocket sync", "Auto PPT generation", "Multiple Bible versions"] },

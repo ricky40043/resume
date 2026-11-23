@@ -55,6 +55,8 @@ const PLANET: Record<string, string> = {
   '1A2B 連線版': 'a1b2-online',
   'Bingo 找到彼此': 'duogame',
   '你問我答': 'quiz',
+  '限時記憶大挑戰': 'quiz',
+  '10-Second Memory Challenge': 'quiz',
   '冷知識大挑戰': 'trivia',
   '貪吃蛇': 'snake',
   '多人貪吃蛇': 'snake-multi',
