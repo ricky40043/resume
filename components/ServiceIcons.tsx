@@ -273,8 +273,27 @@ const SECTION_ICONS: Record<string, React.ReactNode> = {
   '其他專案': IcoSparkle,
 };
 
+/** 限時記憶大挑戰：可翻動的照片卡與 10 秒碼表 */
+const IcoMemoryChallenge = (
+  <g {...stroke}>
+    <g className="sv-move" style={mv(-2, 1, -7)} opacity={0.55}>
+      <rect x="6" y="12" width="23" height="19" rx="3.5" style={{ transform: 'rotate(-13deg)' }} fill="currentColor" fillOpacity={0.22} />
+    </g>
+    <g className="sv-move sv-b" style={mv(0, -2, 6)}>
+      <rect x="11" y="6" width="24" height="19" rx="3.5" fill="currentColor" fillOpacity={0.24} />
+      <circle cx="28.5" cy="12" r="2" fill="currentColor" stroke="none" />
+      <path d="M15 21 l5 -5 4 3 3 -2 4 4" strokeWidth={2.2} />
+    </g>
+    <g className="sv-move sv-c" style={mv(1, -1, 7)}>
+      <path d="M36 27 v-3 m-2.5 0 h5 m3.6 5 1.8 -1.8" strokeWidth={2.3} />
+      <circle cx="36" cy="35" r="8" fill="currentColor" fillOpacity={0.22} />
+      <Label x={36} y={35} size={8.7}>10</Label>
+    </g>
+  </g>
+);
+
 /* ------------------------------------------------------------------ */
-/* 服務圖示（33）                                                       */
+/* 服務圖示                                                             */
 /* ------------------------------------------------------------------ */
 
 const PROJECT_ICONS: Record<string, React.ReactNode> = {
@@ -327,6 +346,9 @@ const PROJECT_ICONS: Record<string, React.ReactNode> = {
   ),
 
   /* ---------- 破冰遊戲 ---------- */
+
+  '限時記憶大挑戰': IcoMemoryChallenge,
+  '10-Second Memory Challenge': IcoMemoryChallenge,
 
   /** 定時炸彈：引信冒火花 → hover 整顆炸開 */
   '定時炸彈': (
